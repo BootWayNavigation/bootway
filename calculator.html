@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K0C8LSDPSV"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K0C8LSDPSV');
+</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+<style>
+        body {
+            display: none; /* Hide entire page by default */
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const pass = atob("c2VjdXJlcGFzcw=="); // Base64 encoded password: "securepass"
+            const input = prompt("Enter the password to access this page:");
+            if (input === pass) {
+                document.body.style.display = "block"; // Show page content
+            } else {
+                alert("Incorrect password! Redirecting...");
+                window.location.href = "https://bootway.in"; // Redirect to another page
+            }
+        });
+    </script>
+</head>
+  <div class="flex min-h-screen">
+    <!-- Left Side Content (Form or other content) -->
+    <div class="w-1/2 bg-gray-50 flex items-center justify-center px-8 py-12">
+      <div class="w-full max-w-[60%] bg-white rounded-2xl p-6 shadow-md"> <!-- 60% width container -->
+        <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+        <h2 class="mt-10 text-center text-2xl font-bold tracking-tight text-gray-900">Pricing Calculator</h2>
+        
+        <form class="mt-8 space-y-6">
+          <div>
+            <label for="area" class="block text-sm font-medium text-gray-900">Area Of Building (Super Built-up Area)</label>
+            <div class="mt-2">
+              <input id="area" placeholder="Area in sq.m." name="area" type="text" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder-gray-400 focus:ring-2 focus:ring-indigo-600 sm:text-sm">
+            </div>
+          </div>
+          <div>
+            <button type="submit" onclick="calculator(event)" class="w-full rounded-md bg-indigo-600 px-3 py-1.5 text-white text-sm font-semibold shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-600">Calculate</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right Side Content (Pricing Plans) -->
+    <div class="w-1/2 bg-white flex items-center justify-center px-8 py-12">
+      <div class="w-full max-w-[90%] rounded-2xl border border-indigo-600 p-6 shadow-sm ring-1 ring-indigo-600"> <!-- 60% width container -->
+        <div class="text-center">
+          <h2 class="text-lg font-medium text-gray-900">Setup Cost</h2>
+          <p class="mt-2 sm:mt-4">
+            <strong id="calculatedAmount" class="text-3xl font-bold text-gray-900 sm:text-4xl">₹.</strong>
+          </p>
+        </div>
+        <ul class="mt-6 space-y-2">
+          <li class="flex items-center gap-1">Multi-Floor Navigation</li>
+          <li class="flex items-center gap-1">Digital Twin / Floor Plan</li>
+          <li class="flex items-center gap-1">Architectural Auditing</li>
+          <li class="flex items-center gap-1">Annual Maintenance</li>
+          <li class="flex items-center gap-1">Dashboard & Support</li>
+          <li class="flex items-center gap-1">Hosting & Server Management</li>
+          <li class="flex items-center gap-1">______________________________</li>
+          <h2 class="text-lg font-medium text-gray-900">Annual Maintenance Charge (From 2nd Year)</h2>
+          <p class="mt-2 sm:mt-4">
+            <strong id="amc" class="text-3xl font-bold text-gray-900 sm:text-4xl">₹1,27,000</strong>
+          </p>
+          
+          <!-- Additional list items can go here -->
+        </ul>
+        <a href="#" class="mt-8 block rounded-full bg-indigo-600 text-white px-12 py-3 text-center text-sm font-medium hover:bg-indigo-700">Get Demo</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calculator(event) {
+      event.preventDefault();
+      let tech = 2300000;
+      let area = document.getElementById("area").value;
+      let amount = tech + area * 90;
+      let formattedAmount = formatIndianNumber(amount); // Format with Indian system commas
+      document.getElementById("calculatedAmount").innerText = `₹${formattedAmount} (Excl. GST)`;
+      console.log("Calculated Amount:", formattedAmount);
+      return amount;
+    }
+
+    function formatIndianNumber(number) {
+      // Convert to string and format with Indian-style commas
+      let numStr = number.toString();
+      let lastThree = numStr.slice(-3);
+      let otherNumbers = numStr.slice(0, -3);
+      if (otherNumbers !== '') {
+        lastThree = ',' + lastThree;
+      }
+      return otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+    }
+</script>
+
+</body>
+</html>

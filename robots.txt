@@ -1,0 +1,14 @@
+# Allow all search engines to crawl everything
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /user-data/
+Disallow: /private/
+
+# Allow search engines to crawl important parts of the site
+Allow: /about/
+Allow: /services/
+Allow: /contact/
+
+# Sitemap location
+Sitemap: https://bootway.in/sitemap.xml
