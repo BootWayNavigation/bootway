@@ -83,7 +83,20 @@
   });
 
   // ===== wow js
-  new WOW().init();
+  try {
+    const wow = new WOW({
+      boxClass: 'wow',
+      animateClass: 'animated',
+      offset: 0,
+      mobile: true,
+      live: true,
+      scrollContainer: null,
+      resetAnimation: true
+    });
+    wow.init();
+  } catch (error) {
+    console.warn('WOW.js initialization error:', error);
+  }
 
   // ====== scroll top js
   function scrollTo(element, to = 0, duration = 500) {
