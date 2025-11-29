@@ -13,24 +13,24 @@
       ud_header.classList.remove("sticky");
     }
 
-    if(logo.length) {
+    if (logo.length) {
       // === logo change
       if (ud_header.classList.contains("sticky")) {
         document.querySelector(".header-logo").src =
           "assets/images/logo/logo-w-re.png"
       } else {
         document.querySelector(".header-logo").src =
-          "assets/images/logo/logo-b-re.png"
+          "assets/images/logo/logo-w-re.png"
       }
     }
 
     if (document.documentElement.classList.contains("dark")) {
-      if(logo.length) {
+      if (logo.length) {
         // === logo change
         if (ud_header.classList.contains("sticky")) {
           document.querySelector(".header-logo").src =
             "assets/images/logo/logo-b-re.png"
-        } 
+        }
       }
     }
 
@@ -131,7 +131,7 @@
     scrollTo(document.documentElement);
   };
 
-    /* ========  themeSwitcher start ========= */
+  /* ========  themeSwitcher start ========= */
 
   // themeSwitcher
   const themeSwitcher = document.getElementById('themeSwitcher');
