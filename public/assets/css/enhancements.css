@@ -1,0 +1,142 @@
+/* BootWay Enhancements - Google Skills Theme */
+
+:root {
+  /* Google Brand Colors */
+  --primary-color: #1A73E8;
+  /* Google Blue */
+  --primary-dark: #1557B0;
+  --primary-light: #D2E3FC;
+
+  --secondary-color: #34A853;
+  /* Google Green */
+  --accent-color: #FBBC04;
+  /* Google Yellow */
+  --danger-color: #EA4335;
+  /* Google Red */
+
+  /* Neutral Colors */
+  --bg-body: #FFFFFF;
+  --bg-surface: #F8F9FA;
+  /* Light Grey Background */
+  --bg-card: #FFFFFF;
+
+  --text-main: #202124;
+  /* Google Grey 900 */
+  --text-body: #5F6368;
+  /* Google Grey 700 */
+  --text-light: #80868B;
+  /* Google Grey 600 */
+
+  /* Shadows & Borders */
+  --shadow-sm: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 24px;
+  /* Highly rounded for cards */
+  --border-radius-pill: 9999px;
+  /* Buttons */
+
+  --font-family: 'Outfit', sans-serif;
+}
+
+/* Base Styles */
+body {
+  font-family: var(--font-family);
+  color: var(--text-body);
+  background-color: var(--bg-body);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-main);
+  font-weight: 500;
+  /* Google Sans style */
+  letter-spacing: -0.02em;
+}
+
+/* Navbar Enhancements */
+.ud-header {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.ud-menu-scroll {
+  color: var(--text-body) !important;
+  font-weight: 500;
+  padding: 8px 20px;
+  border-radius: var(--border-radius-pill);
+  transition: all 0.2s ease;
+}
+
+.ud-menu-scroll:hover,
+.ud-menu-scroll.active {
+  color: var(--primary-color) !important;
+  background-color: var(--primary-light);
+  opacity: 1 !important;
+}
+
+/* Button Styles */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: var(--border-radius-pill);
+  padding: 12px 32px;
+  font-weight: 500;
+  box-shadow: none;
+  /* Flat design initially */
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+/* Card Styles (Google Skills Style) */
+.feature-card,
+.pricing-card {
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid #E8EAED;
+  padding: 32px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+}
+
+.feature-card:hover,
+.pricing-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+#hero-heading {
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* Utilities */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hover-lift {
+  transition: transform 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
