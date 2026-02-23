@@ -66,10 +66,10 @@ const Footer = () => {
               <h4 className="mb-9 text-lg font-semibold text-white">About Us</h4>
               <ul className="space-y-1">
                 {[
-                  { label: 'Home', href: 'http://localhost:5500/#home' },
-                  { label: 'Industries', href: 'http://localhost:5500/#features' },
-                  { label: 'About', href: 'http://localhost:5500/#about' },
-                  { label: 'Pricing', href: 'http://localhost:5500/#pricing' },
+                  { label: 'Home', href: "#home" },
+                  { label: 'Industries', href: "#features" },
+                  { label: 'About', href: "#about" },
+                  { label: 'Pricing', href: "#pricing" },
                 ].map(({ label, href }) => (
                   <li key={label}>
                     <a
@@ -92,7 +92,7 @@ const Footer = () => {
                 {[
                   { label: 'Careers', href: '/' },
                   { label: 'My Applications', href: '/applications' },
-                  { label: 'Privacy Policy', href: 'http://localhost:5500/policy.html' },
+                  { label: 'Privacy Policy', href: "policy.html" },
                 ].map(({ label, href }) => (
                   <li key={label}>
                     <a
@@ -113,8 +113,8 @@ const Footer = () => {
               <h4 className="mb-9 text-lg font-semibold text-white">Our Services</h4>
               <ul className="space-y-1">
                 {[
-                  { label: 'Indoor Navigation', href: 'http://localhost:5500/#about' },
-                  { label: 'Virtual Assistance', href: 'http://localhost:5500/#about' },
+                  { label: 'Indoor Navigation', href: "#about" },
+                  { label: 'Virtual Assistance', href: "#about" },
                 ].map(({ label, href }) => (
                   <li key={label}>
                     <a
@@ -178,7 +178,7 @@ const Footer = () => {
           </p>
           <div className="flex items-center gap-6">
             <a
-              href="http://localhost:5500/policy.html"
+              href="policy.html"
               className="text-sm text-gray-500 hover:text-gray-300 transition-colors"
             >
               Privacy Policy
