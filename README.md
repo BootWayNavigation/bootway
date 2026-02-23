@@ -7,7 +7,7 @@ Career Compass is a modern HR recruitment portal built with Next.js 15, TypeScri
 ## Features
 
 ### For Candidates
-- Browse job listings with detailed descriptions
+- Browse job listings with detailed description
 - Submit job applications with a streamlined form
 - Track application status in real-time
 - View interview schedules and receive offer details
