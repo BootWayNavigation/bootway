@@ -3,12 +3,11 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  async redirects() {
+  async rewrites() {
     return [
       {
         source: '/',
         destination: '/landing.html',
-        permanent: false,
       },
     ];
   },
