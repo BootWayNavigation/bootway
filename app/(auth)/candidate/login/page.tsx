@@ -15,7 +15,7 @@ import { authService } from '@/services/apiService';
 function CandidateLoginForm() {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const redirect = searchParams?.get('redirect') || '/';
+    const redirect = searchParams?.get('redirect') || '/careers';
 
     const [view, setView] = useState<'login' | 'reset'>('login');
     const [showPassword, setShowPassword] = useState(false);
@@ -114,11 +114,11 @@ function CandidateLoginForm() {
         <div className="min-h-screen flex items-center justify-center bg-muted/30 p-4">
             <div className="w-full max-w-md">
                 <Link
-                    href="/"
+                    href="/careers"
                     className="inline-flex items-center text-muted-foreground hover:text-foreground mb-8 transition-colors"
                 >
                     <ArrowLeft className="w-4 h-4 mr-2" />
-                    Back to Home
+                    Back to Careers
                 </Link>
 
                 <Card className="shadow-xl border-border/50">

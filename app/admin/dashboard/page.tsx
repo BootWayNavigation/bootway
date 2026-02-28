@@ -8,7 +8,8 @@ import {
   CheckCircle,
   UserCheck,
   ArrowRight,
-  TrendingUp
+  TrendingUp,
+  ClipboardList
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -243,7 +244,7 @@ export default function AdminDashboard() {
               <CardTitle className="text-lg">Quick Actions</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                 <Button variant="outline" className="h-auto py-4 flex-col gap-2" asChild>
                   <Link href="/admin/jobs" className="flex flex-col items-center gap-2">
                     <Briefcase className="w-5 h-5" />
@@ -266,6 +267,12 @@ export default function AdminDashboard() {
                   <Link href="/admin/employees" className="flex flex-col items-center gap-2">
                     <UserCheck className="w-5 h-5" />
                     <span>View Employees</span>
+                  </Link>
+                </Button>
+                <Button variant="outline" className="h-auto py-4 flex-col gap-2" asChild>
+                  <Link href="/admin/project-management" className="flex flex-col items-center gap-2">
+                    <ClipboardList className="w-5 h-5" />
+                    <span>Project Management</span>
                   </Link>
                 </Button>
               </div>

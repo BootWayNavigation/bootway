@@ -111,6 +111,26 @@ export const API_ENDPOINTS = {
     DELETE: (id: string) => `/employees/${id}`,
   },
 
+  // Projects
+  PROJECTS: {
+    LIST: '/projects',
+    DETAIL: (id: string) => `/projects/${id}`,
+    CREATE: '/projects',
+    UPDATE: (id: string) => `/projects/${id}`,
+    DELETE: (id: string) => `/projects/${id}`,
+  },
+
+  // Tasks
+  TASKS: {
+    LIST: '/tasks',
+    DETAIL: (id: string) => `/tasks/${id}`,
+    CREATE: '/tasks',
+    UPDATE: (id: string) => `/tasks/${id}`,
+    DELETE: (id: string) => `/tasks/${id}`,
+    MY_TASKS: '/tasks/my-tasks',
+    SUBMIT: (id: string) => `/tasks/${id}/submit`,
+  },
+
   // Health Check
   HEALTH: '/health',
 } as const;

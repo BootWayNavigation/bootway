@@ -19,9 +19,9 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 import { getJobById, updateJob } from '@/lib/apiClient';
 
-const departments = ['Engineering', 'Product', 'Design', 'Marketing', 'Sales', 'HR', 'Finance'];
-const jobTypes = ['full-time', 'part-time', 'contract', 'internship'];
+const locations = ['In Office, Jaipur', 'Remote', 'Hybrid'];
 
+const departments = ['Tech', 'Marketing/Design', 'Sales', 'HR', 'Finance', 'Architecture', 'Operations'];
 const ListItem = ({ label, items, current, setter, onAdd, onRemove }: any) => (
     <div className="space-y-2">
         <Label>{label}</Label>
@@ -273,14 +273,16 @@ export default function EditJob() {
 
                                         <div className="space-y-2">
                                             <Label htmlFor="location">Location *</Label>
-                                            <Input
-                                                id="location"
-                                                name="location"
-                                                placeholder="e.g., Bangalore, India"
-                                                value={formData.location}
-                                                onChange={handleInputChange}
-                                                required
-                                            />
+                                            <Select value={formData.location} onValueChange={(value) => setFormData(prev => ({ ...prev, location: value }))}>
+                                                <SelectTrigger>
+                                                    <SelectValue placeholder="Select location" />
+                                                </SelectTrigger>
+                                                <SelectContent>
+                                                    {locations.map((loc) => (
+                                                        <SelectItem key={loc} value={loc}>{loc}</SelectItem>
+                                                    ))}
+                                                </SelectContent>
+                                            </Select>
                                         </div>
 
                                         <div className="space-y-2">
@@ -290,11 +292,9 @@ export default function EditJob() {
                                                     <SelectValue placeholder="Select job type" />
                                                 </SelectTrigger>
                                                 <SelectContent>
-                                                    {jobTypes.map(type => (
-                                                        <SelectItem key={type} value={type}>
-                                                            {type.charAt(0).toUpperCase() + type.slice(1)}
-                                                        </SelectItem>
-                                                    ))}
+                                                    <SelectItem value="full-time">Full Time</SelectItem>
+                                                    <SelectItem value="part-time/contract">Part Time/Contract</SelectItem>
+                                                    <SelectItem value="internship">Internship</SelectItem>
                                                 </SelectContent>
                                             </Select>
                                         </div>

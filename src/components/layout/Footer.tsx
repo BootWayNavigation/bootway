@@ -90,7 +90,7 @@ const Footer = () => {
               <h4 className="mb-9 text-lg font-semibold text-white">Quick Links</h4>
               <ul className="space-y-1">
                 {[
-                  { label: 'Careers', href: '/' },
+                  { label: 'Careers', href: '/careers' },
                   { label: 'My Applications', href: '/applications' },
                   { label: 'Privacy Policy', href: "policy.html" },
                 ].map(({ label, href }) => (

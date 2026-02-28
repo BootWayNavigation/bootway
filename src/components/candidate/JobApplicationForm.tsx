@@ -40,6 +40,7 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const { data: job, isLoading: jobLoading } = useJob(jobId);
   const applyForJobMutation = useApplyForJob();
@@ -62,11 +63,17 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
       ...prev,
       [name]: value
     }));
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
     setFormData((prev) => ({ ...prev, resume: file }));
+    if (errors.resume) {
+      setErrors(prev => ({ ...prev, resume: '' }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -74,8 +81,15 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
     setError('');
     setIsSubmitting(true);
 
-    if (!formData.fullName || !formData.email || !formData.phone) {
-      setError('Please fill in all required fields.');
+    const newErrors: Record<string, string> = {};
+    if (!formData.fullName?.trim()) newErrors.fullName = 'This field is mandatory';
+    if (!formData.email?.trim()) newErrors.email = 'This field is mandatory';
+    if (!formData.phone?.trim()) newErrors.phone = 'This field is mandatory';
+    if (!formData.experience?.trim()) newErrors.experience = 'This field is mandatory';
+    if (!formData.resume) newErrors.resume = 'This field is mandatory';
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       setIsSubmitting(false);
       return;
     }
@@ -181,7 +195,7 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 {error && (
                   <Alert variant="destructive">
                     <AlertDescription>{error}</AlertDescription>
@@ -196,19 +210,20 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="fullName">Full Name *</Label>
+                      <Label htmlFor="fullName" className={errors.fullName ? "text-destructive" : ""}>Full Name *</Label>
                       <Input
                         id="fullName"
                         name="fullName"
                         value={formData.fullName}
                         onChange={handleInputChange}
                         placeholder="Enter your full name"
-                        required
+                        className={errors.fullName ? "border-destructive focus-visible:ring-destructive" : ""}
                         disabled={isSubmitting}
                       />
+                      {errors.fullName && <p className="text-sm text-destructive">{errors.fullName}</p>}
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email Address *</Label>
+                      <Label htmlFor="email" className={errors.email ? "text-destructive" : ""}>Email Address *</Label>
                       <Input
                         id="email"
                         name="email"
@@ -216,15 +231,16 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="you@example.com"
-                        required
+                        className={errors.email ? "border-destructive focus-visible:ring-destructive" : ""}
                         disabled={isSubmitting}
                       />
+                      {errors.email && <p className="text-sm text-destructive">{errors.email}</p>}
                     </div>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="phone">Phone Number *</Label>
+                      <Label htmlFor="phone" className={errors.phone ? "text-destructive" : ""}>Phone Number *</Label>
                       <Input
                         id="phone"
                         name="phone"
@@ -232,21 +248,26 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
                         value={formData.phone}
                         onChange={handleInputChange}
                         placeholder="+91 98765 43210"
-                        required
+                        className={errors.phone ? "border-destructive focus-visible:ring-destructive" : ""}
                         disabled={isSubmitting}
                       />
+                      {errors.phone && <p className="text-sm text-destructive">{errors.phone}</p>}
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="experience">Years of Experience *</Label>
+                      <Label htmlFor="experience" className={errors.experience ? "text-destructive" : ""}>Years of Experience *</Label>
                       <Input
                         id="experience"
                         name="experience"
+                        type="number"
+                        min="0"
+                        step="0.5"
                         value={formData.experience}
                         onChange={handleInputChange}
-                        placeholder="e.g., 5 years"
-                        required
+                        placeholder="e.g., 5"
+                        className={errors.experience ? "border-destructive focus-visible:ring-destructive" : ""}
                         disabled={isSubmitting}
                       />
+                      {errors.experience && <p className="text-sm text-destructive">{errors.experience}</p>}
                     </div>
                   </div>
                 </div>
@@ -283,8 +304,8 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
 
                 {/* Resume Upload */}
                 <div className="space-y-2">
-                  <Label htmlFor="resume">Resume / CV *</Label>
-                  <div className="border-2 border-dashed border-border rounded-lg p-6 text-center hover:border-primary/50 transition-colors">
+                  <Label htmlFor="resume" className={errors.resume ? "text-destructive" : ""}>Resume / CV *</Label>
+                  <div className={`border-2 border-dashed ${errors.resume ? 'border-destructive bg-destructive/5' : 'border-border'} rounded-lg p-6 text-center hover:border-primary/50 transition-colors`}>
                     <Input
                       id="resume"
                       name="resume"
@@ -292,21 +313,20 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
                       accept=".pdf,.doc,.docx"
                       onChange={handleFileChange}
                       className="hidden"
-                      required
                       disabled={isSubmitting}
                     />
                     <Label
                       htmlFor="resume"
                       className="cursor-pointer flex flex-col items-center"
                     >
-                      <Upload className="w-10 h-10 text-muted-foreground mb-3" />
+                      <Upload className={`w-10 h-10 ${errors.resume ? 'text-destructive' : 'text-muted-foreground'} mb-3`} />
                       {formData.resume ? (
                         <span className="text-primary font-medium">
                           {formData.resume.name}
                         </span>
                       ) : (
                         <>
-                          <span className="text-foreground font-medium">
+                          <span className={`${errors.resume ? 'text-destructive' : 'text-foreground'} font-medium`}>
                             Click to upload your resume
                           </span>
                           <span className="text-sm text-muted-foreground mt-1">
@@ -316,17 +336,18 @@ export default function JobApplicationForm({ jobId }: JobApplicationFormProps) {
                       )}
                     </Label>
                   </div>
+                  {errors.resume && <p className="text-sm text-destructive">{errors.resume}</p>}
                 </div>
 
                 {/* Cover Letter */}
                 <div className="space-y-2">
-                  <Label htmlFor="coverLetter">Cover Letter</Label>
+                  <Label htmlFor="coverLetter">Achievement/Spotlight</Label>
                   <Textarea
                     id="coverLetter"
                     name="coverLetter"
                     value={formData.coverLetter}
                     onChange={handleInputChange}
-                    placeholder="Tell us why you're interested in this role and what makes you a great fit..."
+                    placeholder="Share your key achievements and highlights..."
                     rows={5}
                     disabled={isSubmitting}
                   />

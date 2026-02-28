@@ -95,7 +95,18 @@ export default function JobDetailsPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <MapPin className="w-5 h-5" />
-                  <span>{job.location}</span>
+                  {job.location === 'In Office, Jaipur' ? (
+                    <a
+                      href="https://maps.app.goo.gl/zszUk9HanziBEsV17?g_st=aw"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:underline hover:text-white"
+                    >
+                      {job.location}
+                    </a>
+                  ) : (
+                    <span>{job.location}</span>
+                  )}
                 </div>
                 <div className="flex items-center gap-2">
                   <Clock className="w-5 h-5" />
@@ -109,13 +120,6 @@ export default function JobDetailsPage() {
                 )}
               </div>
             </div>
-
-            <Button size="lg" variant="hero" className="bg-white text-primary hover:bg-gray-100 shrink-0">
-              <Link href={`/careers/${job._id}/apply`} className="flex items-center">
-                Apply Now
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
-            </Button>
           </div>
         </div>
       </section>
@@ -187,7 +191,7 @@ export default function JobDetailsPage() {
                   <Button size="lg" className="w-full" asChild>
                     <Link href={`/careers/${job._id}/apply`} className="flex items-center justify-center">
                       <Briefcase className="w-4 h-4 mr-2" />
-                      Apply for this Job
+                      Apply for this Role
                     </Link>
                   </Button>
                 </CardContent>

@@ -16,9 +16,9 @@ import JobCard from '@/components/candidate/JobCard';
 import { useJobs } from '@/hooks/useApi';
 import { Job as JobType } from '@/services/apiService';
 
-const departments = ['All Departments', 'Engineering', 'Product', 'Design', 'Sales', 'Marketing', 'HR', 'Finance'];
-const types = ['All Types', 'Full Time', 'Part Time', 'Contract', 'Internship'];
-const locations = ['All Locations', 'Bangalore, India', 'Remote', 'Mumbai, India', 'Delhi, India'];
+const departments = ['All Departments', 'Tech', 'Marketing/Design', 'Sales', 'HR', 'Finance', 'Architecture', 'Operations'];
+const types = ['All Types', 'Full Time', 'Part Time/Contract', 'Internship'];
+const locations = ['All Locations', 'In Office, Jaipur', 'Remote', 'Hybrid'];
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -30,7 +30,7 @@ export default function Home() {
   const filters = {
     search: searchQuery || undefined,
     department: department === 'All Departments' ? undefined : department,
-    type: jobType === 'All Types' ? undefined : jobType.toLowerCase().replace(' ', '-'),
+    type: jobType === 'All Types' ? undefined : (jobType === 'Part Time/Contract' ? 'part-time/contract' : jobType.toLowerCase().replace(' ', '-')),
     location: location === 'All Locations' ? undefined : location,
   };
 
@@ -46,7 +46,7 @@ export default function Home() {
       department === 'All Departments' || job.department === department;
     const matchesType =
       jobType === 'All Types' ||
-      job.type === jobType.toLowerCase().replace(' ', '-');
+      job.type === (jobType === 'Part Time/Contract' ? 'part-time/contract' : jobType.toLowerCase().replace(' ', '-'));
     const matchesLocation =
       location === 'All Locations' || job.location === location;
 

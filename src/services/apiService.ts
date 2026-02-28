@@ -148,6 +148,38 @@ export interface Employee {
   updatedAt: string;
 }
 
+export interface Project {
+  _id: string;
+  name: string;
+  description?: string;
+  status: 'planning' | 'active' | 'completed';
+  startDate?: string;
+  endDate?: string;
+  createdBy: User;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Task {
+  _id: string;
+  title: string;
+  description?: string;
+  project?: string | Project;
+  assignedTo: Employee;
+  deadline: string;
+  priority: 'low' | 'medium' | 'high' | 'urgent';
+  status: 'todo' | 'in-progress' | 'review' | 'completed';
+  estimatedHours?: number;
+  tags?: string[];
+  attachments?: string[];
+  submissionNote?: string;
+  submissionUrl?: string;
+  submissionAttachments?: string[];
+  createdBy?: User;
+  createdAt: string;
+  updatedAt: string;
+}
+
 // Authentication Service
 export const authService = {
   // Register new user
@@ -545,6 +577,105 @@ export const employeesService = {
   },
 };
 
+// Projects Service
+export const projectsService = {
+  async getProjects() {
+    return api.get<Project[]>(API_ENDPOINTS.PROJECTS.LIST);
+  },
+
+  async getProjectById(id: string) {
+    return api.get<Project>(API_ENDPOINTS.PROJECTS.DETAIL(id));
+  },
+
+  async createProject(projectData: Partial<Project>) {
+    return api.post<Project>(API_ENDPOINTS.PROJECTS.CREATE, projectData);
+  },
+
+  async updateProject(id: string, updateData: Partial<Project>) {
+    return api.put<Project>(API_ENDPOINTS.PROJECTS.UPDATE(id), updateData);
+  },
+
+  async deleteProject(id: string) {
+    return api.delete(API_ENDPOINTS.PROJECTS.DELETE(id));
+  },
+};
+
+// Tasks Service
+export const tasksService = {
+  // Get all tasks with optional filters
+  async getTasks(filters?: { status?: string; priority?: string; search?: string; projectId?: string }) {
+    return api.get<Task[]>(API_ENDPOINTS.TASKS.LIST, filters);
+  },
+
+  // Get single task
+  async getTaskById(id: string) {
+    return api.get<Task>(API_ENDPOINTS.TASKS.DETAIL(id));
+  },
+
+  // Create task
+  async createTask(taskData: {
+    title: string;
+    description?: string;
+    projectId: string;
+    assignedTo: string;
+    deadline: string;
+    priority?: string;
+    status?: string;
+    estimatedHours?: number;
+    tags?: string[];
+    attachments?: string[];
+  }) {
+    return api.post<Task>(API_ENDPOINTS.TASKS.CREATE, taskData);
+  },
+
+  // Update task
+  async updateTask(id: string, updateData: Partial<Task>) {
+    return api.put<Task>(API_ENDPOINTS.TASKS.UPDATE(id), updateData);
+  },
+
+  // Delete task
+  async deleteTask(id: string) {
+    return api.delete(API_ENDPOINTS.TASKS.DELETE(id));
+  },
+
+  // For candidates
+  async getMyTasks(status?: string) {
+    const queryParams = status ? `?status=${status}` : '';
+    return api.get<Task[]>(`${API_ENDPOINTS.TASKS.MY_TASKS}${queryParams}`);
+  },
+
+  async submitTask(id: string, data: Partial<Task> | FormData) {
+    if (data instanceof FormData) {
+      const headers: HeadersInit = {};
+      const token = TokenManager.getToken();
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+      }
+
+      const response = await fetch(`${API_CONFIG.BASE_URL}${API_ENDPOINTS.TASKS.SUBMIT(id)}`, {
+        method: 'PUT',
+        headers,
+        body: data, // Browser automatically sets Content-Type with boundary
+      });
+
+      const responseText = await response.text();
+      let responseData;
+      try {
+        responseData = JSON.parse(responseText);
+      } catch {
+        throw new Error('Invalid JSON response from server');
+      }
+
+      if (!response.ok) {
+        throw new Error(responseData.message || 'Unknown API error');
+      }
+      return responseData;
+    }
+
+    return api.put<Task>(API_ENDPOINTS.TASKS.SUBMIT(id), data);
+  }
+};
+
 // Users Service
 export const usersService = {
   // Get all users with filters
@@ -606,6 +737,8 @@ export const apiService = {
   interviews: interviewsService,
   offers: offersService,
   employees: employeesService,
+  projects: projectsService,
+  tasks: tasksService,
   users: usersService,
   system: systemService,
 };

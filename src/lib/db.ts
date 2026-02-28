@@ -6,6 +6,7 @@ import '../models/Job';
 import '../models/Application';
 import '../models/Interview';
 import '../models/Employee';
+import '../models/Task';
 
 // Cache the connection to avoid reconnecting on every serverless invocation
 let cached = (global as any).__mongoose;

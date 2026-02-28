@@ -78,8 +78,8 @@ export default function LoginPage() {
                 </div>
 
                 <div className="text-center mt-8">
-                    <Link href="/" className="text-sm text-muted-foreground hover:text-foreground hover:underline">
-                        &larr; Back to Home
+                    <Link href="/careers" className="text-sm text-muted-foreground hover:text-foreground hover:underline">
+                        &larr; Back to Careers
                     </Link>
                 </div>
             </div>

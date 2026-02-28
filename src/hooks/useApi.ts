@@ -2,7 +2,7 @@
 // This file provides React Query hooks for all API operations with caching and state management
 
 import { useQuery, useMutation, useQueryClient, UseQueryOptions, UseMutationOptions } from '@tanstack/react-query';
-import { apiService, User, Job, Application, Interview, Offer, Employee } from '@/services/apiService';
+import { apiService, User, Job, Application, Interview, Offer, Employee, Project, Task } from '@/services/apiService';
 import { APIError } from '@/lib/api';
 
 // Query keys factory
@@ -59,6 +59,26 @@ export const queryKeys = {
     list: (filters: any) => [...queryKeys.users.lists(), filters] as const,
     details: () => [...queryKeys.users.all, 'detail'] as const,
     detail: (id: string) => [...queryKeys.users.details(), id] as const,
+  },
+
+  // Tasks queries
+  tasks: {
+    all: ['tasks'] as const,
+    lists: () => [...queryKeys.tasks.all, 'list'] as const,
+    list: (filters: any) => [...queryKeys.tasks.lists(), filters] as const,
+    details: () => [...queryKeys.tasks.all, 'detail'] as const,
+    detail: (id: string) => [...queryKeys.tasks.details(), id] as const,
+    myTasks: (status?: string) => [...queryKeys.tasks.all, 'my-tasks', status] as const,
+    byProject: (projectId: string) => [...queryKeys.tasks.all, 'by-project', projectId] as const,
+  },
+
+  // Projects queries
+  projects: {
+    all: ['projects'] as const,
+    lists: () => [...queryKeys.projects.all, 'list'] as const,
+    list: (filters: any) => [...queryKeys.projects.lists(), filters] as const,
+    details: () => [...queryKeys.projects.all, 'detail'] as const,
+    detail: (id: string) => [...queryKeys.projects.details(), id] as const,
   },
 } as const;
 
@@ -453,6 +473,152 @@ export const useDeleteEmployee = () => {
   });
 };
 
+// Tasks Hooks
+export const useTasks = (filters?: any, options?: any) => {
+  return useQuery<Task[], APIError>({
+    queryKey: queryKeys.tasks.list(filters || {}),
+    queryFn: () => apiService.tasks.getTasks(filters).then(res => res.data),
+    ...defaultQueryOptions,
+    ...options,
+  });
+};
+
+export const useTask = (id: string, options?: any) => {
+  return useQuery<Task, APIError>({
+    queryKey: queryKeys.tasks.detail(id),
+    queryFn: () => apiService.tasks.getTaskById(id).then(res => res.data),
+    enabled: !!id,
+    ...defaultQueryOptions,
+    ...options,
+  });
+};
+
+export const useCreateTask = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (taskData: any) => apiService.tasks.createTask(taskData),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.tasks.all });
+    },
+    ...defaultMutationOptions,
+  });
+};
+
+export const useUpdateTask = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ id, updateData }: { id: string; updateData: any }) =>
+      apiService.tasks.updateTask(id, updateData),
+    onSuccess: (_, { id }) => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.tasks.all });
+      queryClient.invalidateQueries({ queryKey: queryKeys.tasks.detail(id) });
+    },
+    ...defaultMutationOptions,
+  });
+};
+
+// Delete Task
+export const useDeleteTask = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (id: string) => apiService.tasks.deleteTask(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.tasks.all });
+    },
+    ...defaultMutationOptions,
+  });
+};
+
+// Projects Hooks
+export const useProjects = (options?: any) => {
+  return useQuery<Project[], APIError>({
+    queryKey: queryKeys.projects.lists(),
+    queryFn: () => apiService.projects.getProjects().then(res => res.data),
+    ...defaultQueryOptions,
+    ...options,
+  });
+};
+
+export const useProject = (id: string, options?: any) => {
+  return useQuery<Project, APIError>({
+    queryKey: queryKeys.projects.detail(id),
+    queryFn: () => apiService.projects.getProjectById(id).then(res => res.data),
+    enabled: !!id,
+    ...defaultQueryOptions,
+    ...options,
+  });
+};
+
+export const useCreateProject = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (projectData: Partial<Project>) => apiService.projects.createProject(projectData),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.projects.lists() });
+    },
+    ...defaultMutationOptions,
+  });
+};
+
+export const useUpdateProject = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ id, updateData }: { id: string; updateData: Partial<Project> }) =>
+      apiService.projects.updateProject(id, updateData),
+    onSuccess: (_, { id }) => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.projects.lists() });
+      queryClient.invalidateQueries({ queryKey: queryKeys.projects.detail(id) });
+    },
+    ...defaultMutationOptions,
+  });
+};
+
+export const useDeleteProject = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (id: string) => apiService.projects.deleteProject(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.projects.lists() });
+    },
+    ...defaultMutationOptions,
+  });
+};
+
+// Candidate Tasks
+export const useMyTasks = (status?: string, options?: UseQueryOptions<Task[], APIError>) => {
+  return useQuery<Task[], APIError>({
+    queryKey: queryKeys.tasks.myTasks(status),
+    queryFn: async () => {
+      const response = await apiService.tasks.getMyTasks(status);
+      return response.data;
+    },
+    ...defaultQueryOptions,
+    ...options,
+  });
+};
+
+export const useSubmitTask = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async ({ id, data }: { id: string; data: Partial<Task> }) => {
+      const response = await apiService.tasks.submitTask(id, data);
+      return response.data;
+    },
+    onSuccess: (_, { id }) => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.tasks.myTasks() });
+      queryClient.invalidateQueries({ queryKey: queryKeys.tasks.detail(id) });
+    },
+    ...defaultMutationOptions,
+  });
+};
+
 // Users Hooks
 export const useUsers = (filters?: any, options?: UseQueryOptions<User[], APIError>) => {
   return useQuery<User[], APIError>({
@@ -556,6 +722,13 @@ const apiHooks = {
   useUser,
   useCreateUser,
   useUpdateUser,
+
+  // Projects
+  useProjects,
+  useProject,
+  useCreateProject,
+  useUpdateProject,
+  useDeleteProject,
 
   // System
   useHealthCheck,

@@ -177,7 +177,10 @@ const ApplicationCard = ({ application }: { application: Application }) => {
                                 <Trophy className="w-8 h-8 text-green-600" />
                             </div>
                             <span className="font-bold text-lg mb-1">Congratulations! You&apos;re Selected!</span>
-                            <span className="text-sm opacity-90">We are thrilled to offer you this position. Check your email for next steps.</span>
+                            <span className="text-sm opacity-90 mb-4 text-center max-w-sm">We are thrilled to offer you this position. Check your assigned tasks for next steps and onboarding.</span>
+                            <Button asChild size="sm" className="bg-green-600 hover:bg-green-700 text-white">
+                                <Link href="/my-tasks">View Assigned Tasks</Link>
+                            </Button>
                         </div>
                     ) : (
                         <ApplicationTimeline status={application.status} />
