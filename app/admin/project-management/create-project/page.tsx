@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
@@ -25,7 +25,7 @@ import PageContainer from '@/components/layout/PageContainer';
 import { useCreateProject, useUpdateProject, useProject } from '@/hooks/useApi';
 import { toast } from 'sonner';
 
-export default function CreateProjectPage() {
+function CreateProjectContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const editId = searchParams.get('edit');
@@ -212,5 +212,33 @@ export default function CreateProjectPage() {
                 </div>
             </section>
         </PageContainer>
+    );
+}
+
+function CreateProjectFallback() {
+    return (
+        <PageContainer>
+            <section className="bg-hero-gradient py-8 md:py-10">
+                <div className="container-custom">
+                    <h1 className="text-2xl md:text-3xl font-bold text-white mb-1 flex items-center gap-2">
+                        <LayoutGrid className="w-7 h-7" />
+                        Create Project
+                    </h1>
+                </div>
+            </section>
+            <section className="section-padding bg-muted/30">
+                <div className="container-custom max-w-2xl flex justify-center p-12">
+                    <Loader2 className="w-8 h-8 animate-spin text-primary" />
+                </div>
+            </section>
+        </PageContainer>
+    );
+}
+
+export default function CreateProjectPage() {
+    return (
+        <Suspense fallback={<CreateProjectFallback />}>
+            <CreateProjectContent />
+        </Suspense>
     );
 }
