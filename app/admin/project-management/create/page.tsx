@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { Suspense, useState, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
@@ -31,7 +31,7 @@ import { useCreateTask, useUpdateTask, useEmployees, useTask, useProjects, usePr
 import React from 'react';
 import { toast } from 'sonner';
 
-export default function CreateTaskPage() {
+function CreateTaskContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const editId = searchParams.get('edit');
@@ -417,5 +417,33 @@ export default function CreateTaskPage() {
                 </div>
             </section>
         </PageContainer>
+    );
+}
+
+function CreateTaskFallback() {
+    return (
+        <PageContainer>
+            <section className="bg-hero-gradient py-8 md:py-10">
+                <div className="container-custom">
+                    <h1 className="text-2xl md:text-3xl font-bold text-white mb-1 flex items-center gap-2">
+                        <ClipboardList className="w-7 h-7" />
+                        Create Task
+                    </h1>
+                </div>
+            </section>
+            <section className="section-padding bg-muted/30">
+                <div className="container-custom max-w-4xl flex justify-center p-20">
+                    <Loader2 className="w-10 h-10 animate-spin text-primary" />
+                </div>
+            </section>
+        </PageContainer>
+    );
+}
+
+export default function CreateTaskPage() {
+    return (
+        <Suspense fallback={<CreateTaskFallback />}>
+            <CreateTaskContent />
+        </Suspense>
     );
 }
