@@ -27,9 +27,16 @@ export async function connectDB() {
     if (!cached.promise) {
         cached.promise = mongoose.connect(process.env.MONGO_URI, {
             bufferCommands: false,
+            family: 4,
         });
     }
 
-    cached.conn = await cached.promise;
+    try {
+        cached.conn = await cached.promise;
+    } catch (e) {
+        // Reset the cached promise so a fresh connection attempt can be made
+        cached.promise = null;
+        throw e;
+    }
     return cached.conn;
 }

@@ -37,7 +37,7 @@ export function requireAuth(req: NextRequest): JwtPayload {
 
 export function requireAdminHR(req: NextRequest): JwtPayload {
     const user = requireAuth(req);
-    if (user.role !== 'admin' && user.role !== 'hr') {
+    if (user.role !== 'admin' && user.role !== 'hr' && user.role !== 'superadmin') {
         throw { status: 403, message: 'User role is not authorized to access this route' };
     }
     return user;

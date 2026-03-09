@@ -22,6 +22,7 @@ export async function GET(req: NextRequest) {
         const jobs = await Job.find(query).sort({ createdAt: -1 });
         return NextResponse.json({ success: true, count: jobs.length, data: jobs });
     } catch (err) {
+        console.error('Error fetching jobs:', err);
         return NextResponse.json({ success: false, message: 'Server error' }, { status: 500 });
     }
 }

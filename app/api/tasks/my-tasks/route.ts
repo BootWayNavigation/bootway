@@ -31,6 +31,7 @@ export async function GET(req: NextRequest) {
 
         return NextResponse.json({ success: true, count: tasks.length, data: tasks });
     } catch (err: any) {
+        console.error('my-tasks error:', err);
         return handleAuthError(err);
     }
 }
