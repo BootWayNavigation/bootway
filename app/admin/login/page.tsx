@@ -141,11 +141,11 @@ export default function AdminLoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-muted/30 p-4">
       <div className="w-full max-w-md">
         <Link
-          href="/"
+          href="/careers"
           className="inline-flex items-center text-muted-foreground hover:text-foreground mb-8 transition-colors"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Home
+          Back to Careers
         </Link>
 
         <Card className="shadow-xl border-border/50">
@@ -325,14 +325,6 @@ export default function AdminLoginPage() {
                 </div>
               </form>
             )}
-
-            <div className="mt-6 p-4 bg-muted/50 rounded-lg">
-              <p className="text-sm font-medium text-muted-foreground mb-2">Demo Credentials:</p>
-              <div className="text-xs space-y-1">
-                <div><strong>Admin:</strong> admin@bootway.com / admin123</div>
-                <div><strong>HR:</strong> hr@bootway.com / hr123456</div>
-              </div>
-            </div>
           </CardContent>
         </Card>
       </div>
