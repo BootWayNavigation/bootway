@@ -5,7 +5,7 @@ import { connectDB } from '@/lib/db';
 import { User } from '@/models/User';
 import { generateToken } from '@/lib/auth-helpers';
 
-const client = new OAuth2Client(process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID);
+const client = new OAuth2Client(process.env.GOG_CLNT_ID);
 
 export async function POST(req: NextRequest) {
     try {
@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
         // Verify the token
         const ticket = await client.verifyIdToken({
             idToken: credential,
-            audience: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+            audience: process.env.GOG_CLNT_ID,
         });
 
         const payload = ticket.getPayload();

@@ -32,7 +32,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.png" />
       </head>
       <body>
-        <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || ""}>
+        <GoogleOAuthProvider clientId={process.env.GOG_CLNT_ID || ""}>
           <QueryClientProvider client={queryClient}>
             <AuthProvider>
               <TooltipProvider>
