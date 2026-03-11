@@ -124,6 +124,14 @@ export const useAuth = () => {
     ...defaultMutationOptions,
   });
 
+  const googleLoginMutation = useMutation({
+    mutationFn: (credential: string) => apiService.auth.googleLogin(credential),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.auth.current });
+    },
+    ...defaultMutationOptions,
+  });
+
   const registerMutation = useMutation({
     mutationFn: (userData: any) => apiService.auth.register(userData),
     onSuccess: () => {
@@ -150,6 +158,8 @@ export const useAuth = () => {
     isAuthenticated: !!getCurrentUserQuery.data,
     login: loginMutation.mutateAsync,
     loginLoading: loginMutation.isPending,
+    googleLogin: googleLoginMutation.mutateAsync,
+    googleLoginLoading: googleLoginMutation.isPending,
     register: registerMutation.mutateAsync,
     registerLoading: registerMutation.isPending,
     updatePassword: updatePasswordMutation.mutateAsync,

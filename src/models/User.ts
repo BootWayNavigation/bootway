@@ -17,6 +17,8 @@ const userSchema = new mongoose.Schema({
     avatar: { type: String, default: null },
     isActive: { type: Boolean, default: true },
     lastLogin: { type: Date, default: null },
+    authProvider: { type: String, enum: ['local', 'google'], default: 'local' },
+    googleId: { type: String, default: null },
     resetPasswordToken: String,
     resetPasswordExpire: Date,
 }, { timestamps: true });

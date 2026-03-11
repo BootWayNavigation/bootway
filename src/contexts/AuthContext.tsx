@@ -11,10 +11,12 @@ interface AuthContextType {
   isAuthenticated: boolean;
   isAdminOrHR: boolean;
   login: (email: string, password: string) => Promise<void>;
+  googleLogin: (credential: string) => Promise<{ role: string }>;
   register: (userData: any) => Promise<void>;
   updatePassword: (passwordData: any) => Promise<void>;
   logout: () => void;
   loginLoading: boolean;
+  googleLoginLoading: boolean;
   registerLoading: boolean;
   updatePasswordLoading: boolean;
 }
@@ -37,6 +39,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
     login: async (email: string, password: string) => {
       await auth.login({ email, password });
     },
+    googleLogin: async (credential: string) => {
+      const res = await auth.googleLogin(credential) as any;
+      return { role: res?.user?.role || 'candidate' };
+    },
     register: async (userData: any) => {
       await auth.register(userData);
     },
@@ -45,6 +51,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     },
     logout: auth.logout,
     loginLoading: auth.loginLoading,
+    googleLoginLoading: auth.googleLoginLoading,
     registerLoading: auth.registerLoading,
     updatePasswordLoading: auth.updatePasswordLoading,
   };

@@ -207,6 +207,15 @@ export const authService = {
     return response;
   },
 
+  // Google Login user
+  async googleLogin(credential: string) {
+    const response = await api.post(API_ENDPOINTS.AUTH.GOOGLE_LOGIN, { credential }) as any;
+    if (response.success && response.token) {
+      TokenManager.setToken(response.token);
+    }
+    return response;
+  },
+
   // Get current user
   async getCurrentUser() {
     return api.get<User>(API_ENDPOINTS.AUTH.ME);

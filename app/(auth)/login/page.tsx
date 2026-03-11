@@ -1,88 +1,106 @@
 'use client';
 
+import { useState, Suspense } from 'react';
 import Link from 'next/link';
-import { User, Briefcase, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { Loader2, ArrowLeft } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { useAuthContext } from '@/contexts/AuthContext';
+import { GoogleLogin } from '@react-oauth/google';
+
+function UnifiedLoginForm() {
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const redirect = searchParams?.get('redirect') || null;
+    const [error, setError] = useState('');
+
+    const { googleLogin, googleLoginLoading } = useAuthContext();
+
+    const handleGoogleSuccess = async (credentialResponse: any) => {
+        try {
+            setError('');
+            const result = await googleLogin(credentialResponse.credential);
+            const role = result?.role;
+
+            if (role === 'admin' || role === 'hr') {
+                window.location.href = '/admin/dashboard';
+            } else {
+                router.push(redirect || '/careers');
+            }
+        } catch (err: any) {
+            setError(err.message || 'Google login failed. Please try again.');
+        }
+    };
+
+    return (
+        <div className="min-h-screen flex items-center justify-center bg-muted/30 p-4">
+            <div className="w-full max-w-sm">
+                <Link
+                    href="/careers"
+                    className="inline-flex items-center text-muted-foreground hover:text-foreground mb-8 transition-colors"
+                >
+                    <ArrowLeft className="w-4 h-4 mr-2" />
+                    Back to Careers
+                </Link>
+
+                <Card className="shadow-xl border-border/50">
+                    <CardHeader className="text-center pb-2">
+                        <div className="flex justify-center mb-4">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src="/assets/images/logo/logo-b-re.png" alt="BootWay" className="h-10 w-auto" />
+                        </div>
+                        <CardTitle className="text-2xl">Welcome Back</CardTitle>
+                        <CardDescription>
+                            Sign in to continue to BootWay
+                        </CardDescription>
+                    </CardHeader>
+
+                    <CardContent className="pt-6 flex flex-col items-center gap-4">
+                        {error && (
+                            <Alert variant="destructive" className="w-full">
+                                <AlertDescription>{error}</AlertDescription>
+                            </Alert>
+                        )}
+
+                        {googleLoginLoading ? (
+                            <div className="flex items-center gap-2 text-muted-foreground py-6">
+                                <Loader2 className="w-5 h-5 animate-spin" />
+                                <span>Signing you in...</span>
+                            </div>
+                        ) : (
+                            <div className="w-full flex justify-center py-2">
+                                <GoogleLogin
+                                    onSuccess={handleGoogleSuccess}
+                                    onError={() => setError('Google login failed. Please try again.')}
+                                    useOneTap
+                                    theme="filled_blue"
+                                    shape="pill"
+                                    size="large"
+                                    text="signin_with"
+                                    width="280"
+                                />
+                            </div>
+                        )}
+
+                        <p className="text-xs text-muted-foreground text-center pb-2">
+                            HR &amp; Admin accounts are redirected to the dashboard automatically.
+                        </p>
+                    </CardContent>
+                </Card>
+            </div>
+        </div>
+    );
+}
 
 export default function LoginPage() {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-muted/30 p-4">
-            <div className="w-full max-w-4xl">
-                <div className="text-center mb-8">
-                    <Link href="/" className="inline-block mb-8" aria-label="BootWay Home">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src="/assets/images/logo/logo-b-re.png" alt="BootWay" className="h-10 w-auto mx-auto" />
-                    </Link>
-                    <h1 className="text-3xl font-bold text-foreground mb-2">Welcome Back</h1>
-                    <p className="text-muted-foreground">Please select your login type to continue</p>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                    {/* Candidate Login */}
-                    <Card className="hover:shadow-lg transition-shadow cursor-pointer border-2 hover:border-primary/50 group h-full">
-                        <CardHeader className="text-center pb-2">
-                            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
-                                <User className="w-8 h-8 text-primary" />
-                            </div>
-                            <CardTitle className="text-2xl">Candidate</CardTitle>
-                            <CardDescription>
-                                For job seekers applying for positions
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent className="text-center pt-4">
-                            <p className="text-sm text-muted-foreground mb-6">
-                                Apply for jobs, track your applications.
-                            </p>
-                            <Button asChild className="w-full" size="lg">
-                                <Link href="/candidate/login">
-                                    Login as Candidate
-                                    <ArrowRight className="w-4 h-4 ml-2" />
-                                </Link>
-                            </Button>
-                            <div className="mt-4 text-sm text-muted-foreground">
-                                Don&apos;t have an account?{' '}
-                                <Link href="/candidate/signup" className="text-primary hover:underline font-medium">
-                                    Sign up
-                                </Link>
-                            </div>
-                        </CardContent>
-                    </Card>
-
-                    {/* HR/Admin Login */}
-                    <Card className="hover:shadow-lg transition-shadow cursor-pointer border-2 hover:border-primary/50 group h-full">
-                        <CardHeader className="text-center pb-2">
-                            <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-accent/20 transition-colors">
-                                <Briefcase className="w-8 h-8 text-accent" />
-                            </div>
-                            <CardTitle className="text-2xl">Admin / HR</CardTitle>
-                            <CardDescription>
-                                For administrators and hiring managers
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent className="text-center pt-4">
-                            <p className="text-sm text-muted-foreground mb-6">
-                                Post jobs, manage applications, and schedule interviews.
-                            </p>
-                            <Button asChild className="w-full" size="lg">
-                                <Link href="/admin/login">
-                                    Login
-                                    <ArrowRight className="w-4 h-4 ml-2" />
-                                </Link>
-                            </Button>
-                            <div className="mt-4 text-sm text-muted-foreground">
-                                Admin access only
-                            </div>
-                        </CardContent>
-                    </Card>
-                </div>
-
-                <div className="text-center mt-8">
-                    <Link href="/careers" className="text-sm text-muted-foreground hover:text-foreground hover:underline">
-                        &larr; Back to Careers
-                    </Link>
-                </div>
+        <Suspense fallback={
+            <div className="min-h-screen flex items-center justify-center bg-muted/30">
+                <Loader2 className="w-8 h-8 animate-spin text-primary" />
             </div>
-        </div>
+        }>
+            <UnifiedLoginForm />
+        </Suspense>
     );
 }
