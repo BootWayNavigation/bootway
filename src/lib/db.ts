@@ -6,6 +6,7 @@ import '../models/Job';
 import '../models/Application';
 import '../models/Interview';
 import '../models/Employee';
+import '../models/Project';
 import '../models/Task';
 
 // Cache the connection to avoid reconnecting on every serverless invocation

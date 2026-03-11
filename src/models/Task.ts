@@ -26,7 +26,4 @@ const taskSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // Avoid model recompilation errors in Next.js/HMR
-if (mongoose.models.Task) {
-    delete mongoose.models.Task;
-}
-export const Task = mongoose.model('Task', taskSchema);
+export const Task = mongoose.models.Task || mongoose.model('Task', taskSchema);

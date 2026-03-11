@@ -113,6 +113,7 @@ export default function CandidateTaskDetailPage() {
     };
 
     const isReadOnly = task.status === 'completed' && !isEditing;
+    const isDeadlinePassed = task.deadline ? new Date(task.deadline) < new Date() : false;
 
     return (
         <PageContainer>
@@ -126,6 +127,15 @@ export default function CandidateTaskDetailPage() {
                         </Link>
                     </Button>
                 </div>
+
+                {isDeadlinePassed && task.status !== 'completed' && (
+                    <Card className="mb-6 border-amber-300 bg-amber-50">
+                        <CardContent className="py-4 flex items-center gap-3 text-amber-800">
+                            <AlertCircle className="w-5 h-5 shrink-0" />
+                            <p className="text-sm font-medium"> The deadline for this task has passed. You can no longer accept or submit work.</p>
+                        </CardContent>
+                    </Card>
+                )}
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {/* Main Content Area */}
@@ -208,7 +218,12 @@ export default function CandidateTaskDetailPage() {
                                             </div>
                                         )}
 
-                                        <Button variant="outline" className="w-full" onClick={() => setIsEditing(true)}>
+                                        <Button 
+                                            variant="outline" 
+                                            className="w-full" 
+                                            onClick={() => setIsEditing(true)}
+                                            disabled={isDeadlinePassed}
+                                        >
                                             Update Submission
                                         </Button>
                                     </div>
@@ -217,64 +232,77 @@ export default function CandidateTaskDetailPage() {
                                         <div className="space-y-4">
                                             <div className="space-y-1.5 text-sm">
                                                 <Label htmlFor="status" className="font-semibold">Update Status</Label>
-                                                <Select value={status} onValueChange={setStatus}>
+                                                <Select 
+                                                    value={status} 
+                                                    onValueChange={setStatus}
+                                                    disabled={isDeadlinePassed}
+                                                >
                                                     <SelectTrigger id="status" className="w-full md:w-[200px]">
                                                         <SelectValue />
                                                     </SelectTrigger>
                                                     <SelectContent>
                                                         <SelectItem value="in-progress">In Progress</SelectItem>
-                                                        <SelectItem value="review">Ready for Review</SelectItem>
+                                                        <SelectItem 
+                                                            value="review" 
+                                                            disabled={task.status !== 'in-progress' && task.status !== 'review'}
+                                                        >
+                                                            Ready for Review
+                                                        </SelectItem>
                                                     </SelectContent>
                                                 </Select>
                                             </div>
 
-                                            <div className="space-y-1.5">
-                                                <Label htmlFor="submissionUrl" className="font-semibold flex items-center gap-1.5">
-                                                    <LinkIcon className="w-4 h-4" /> Work Link <span className="text-muted-foreground font-normal">(optional)</span>
-                                                </Label>
-                                                <Input
-                                                    id="submissionUrl"
-                                                    placeholder="e.g. Google Doc link, GitHub PR, Figma design, etc."
-                                                    value={submissionUrl}
-                                                    onChange={e => setSubmissionUrl(e.target.value)}
-                                                />
-                                            </div>
+                                            {status === 'review' && !isDeadlinePassed && (
+                                                <>
+                                                    <div className="space-y-1.5">
+                                                        <Label htmlFor="submissionUrl" className="font-semibold flex items-center gap-1.5">
+                                                            <LinkIcon className="w-4 h-4" /> Work Link <span className="text-muted-foreground font-normal">(optional)</span>
+                                                        </Label>
+                                                        <Input
+                                                            id="submissionUrl"
+                                                            placeholder="e.g. Google Doc link, GitHub PR, Figma design, etc."
+                                                            value={submissionUrl}
+                                                            onChange={e => setSubmissionUrl(e.target.value)}
+                                                        />
+                                                    </div>
 
-                                            <div className="space-y-1.5">
-                                                <Label htmlFor="submissionNote" className="font-semibold flex items-center gap-1.5">
-                                                    <FileText className="w-4 h-4" /> Submission Notes
-                                                </Label>
-                                                <Textarea
-                                                    id="submissionNote"
-                                                    placeholder="Describe what you've done, blockers, or notes for the reviewer..."
-                                                    rows={5}
-                                                    value={submissionNote}
-                                                    onChange={e => setSubmissionNote(e.target.value)}
-                                                    className="resize-y"
-                                                />
-                                            </div>
+                                                    <div className="space-y-1.5">
+                                                        <Label htmlFor="submissionNote" className="font-semibold flex items-center gap-1.5">
+                                                            <FileText className="w-4 h-4" /> Submission Notes
+                                                        </Label>
+                                                        <Textarea
+                                                            id="submissionNote"
+                                                            placeholder="Describe what you've done, blockers, or notes for the reviewer..."
+                                                            rows={5}
+                                                            value={submissionNote}
+                                                            onChange={e => setSubmissionNote(e.target.value)}
+                                                            className="resize-y"
+                                                        />
+                                                    </div>
 
-                                            <div className="space-y-1.5">
-                                                <Label htmlFor="submissionFiles" className="font-semibold flex items-center gap-1.5">
-                                                    <Paperclip className="w-4 h-4" /> Attach Files <span className="text-muted-foreground font-normal">(optional)</span>
-                                                </Label>
-                                                <Input
-                                                    id="submissionFiles"
-                                                    type="file"
-                                                    multiple
-                                                    onChange={(e) => {
-                                                        if (e.target.files) {
-                                                            setSubmissionFiles(Array.from(e.target.files));
-                                                        }
-                                                    }}
-                                                    className="cursor-pointer file:cursor-pointer"
-                                                />
-                                                {submissionFiles.length > 0 && (
-                                                    <p className="text-xs text-muted-foreground">
-                                                        {submissionFiles.length} file(s) selected
-                                                    </p>
-                                                )}
-                                            </div>
+                                                    <div className="space-y-1.5">
+                                                        <Label htmlFor="submissionFiles" className="font-semibold flex items-center gap-1.5">
+                                                            <Paperclip className="w-4 h-4" /> Attach Files <span className="text-muted-foreground font-normal">(optional)</span>
+                                                        </Label>
+                                                        <Input
+                                                            id="submissionFiles"
+                                                            type="file"
+                                                            multiple
+                                                            onChange={(e) => {
+                                                                if (e.target.files) {
+                                                                    setSubmissionFiles(Array.from(e.target.files));
+                                                                }
+                                                            }}
+                                                            className="cursor-pointer file:cursor-pointer"
+                                                        />
+                                                        {submissionFiles.length > 0 && (
+                                                            <p className="text-xs text-muted-foreground">
+                                                                {submissionFiles.length} file(s) selected
+                                                            </p>
+                                                        )}
+                                                    </div>
+                                                </>
+                                            )}
                                         </div>
 
                                         <div className="flex gap-3 justify-end pt-2">
@@ -288,10 +316,17 @@ export default function CandidateTaskDetailPage() {
                                                     Cancel
                                                 </Button>
                                             )}
-                                            <Button type="submit" disabled={submitting}>
-                                                {submitting ? 'Submitting...' : 'Submit Work'}
+                                            <Button 
+                                                type="submit" 
+                                                disabled={submitting || isDeadlinePassed || (status === 'in-progress' && task.status === 'in-progress')}
+                                            >
+                                                {submitting ? 'Submitting...' : 
+                                                 isDeadlinePassed ? 'Deadline Passed' :
+                                                 status === 'in-progress' ? (task.status === 'in-progress' ? 'Accepted' : 'Accept Task') : 
+                                                 'Submit Work'}
                                             </Button>
                                         </div>
+
                                     </form>
                                 )}
                             </CardContent>

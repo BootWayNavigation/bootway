@@ -32,6 +32,11 @@ export async function GET(req: NextRequest) {
         return NextResponse.json({ success: true, count: tasks.length, data: tasks });
     } catch (err: any) {
         console.error('my-tasks error:', err);
-        return handleAuthError(err);
+        // Include the actual error message in the response for debugging
+        return NextResponse.json({ 
+            success: false, 
+            message: err.message || 'Internal server error',
+            error: process.env.NODE_ENV === 'development' ? err.toString() : undefined
+        }, { status: 500 });
     }
 }
