@@ -40,9 +40,18 @@ const links = [
             </svg>
         ),
     },
+    {
+        title: 'Research & Studies',
+        url: '/research.html',
+        icon: (
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 256 256" fill="currentColor">
+                <path d="M216,40V216a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8h96l72,72Zm-8,72H152a8,8,0,0,1-8-8V48H56V208H200ZM176,136H80a8,8,0,0,0,0,16h96a8,8,0,0,0,0-16Zm0,32H80a8,8,0,0,0,0,16h96a8,8,0,0,0,0-16Z"></path>
+            </svg>
+        ),
+    },
 ];
 
-export default function LinktreePage() {
+export default function LinkMapPage() {
     const [mounted, setMounted] = useState(false);
     useEffect(() => setMounted(true), []);
 

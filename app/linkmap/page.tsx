@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import LinktreePage from './LinktreePage';
+import LinkMapPage from './LinkMapPage';
 
 export const metadata: Metadata = {
     title: 'BootWay | Links',
@@ -13,5 +13,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-    return <LinktreePage />;
+    return <LinkMapPage />;
 }
