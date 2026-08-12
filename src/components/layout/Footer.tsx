@@ -66,10 +66,10 @@ const Footer = () => {
               <h4 className="mb-9 text-lg font-semibold text-gray-900">About Us</h4>
               <ul className="space-y-1">
                 {[
-                  { label: 'Home', href: "landing.html#home" },
-                  { label: 'Industries', href: "landing.html#features" },
-                  { label: 'About', href: "landing.html#about" },
-                  { label: 'Pricing', href: "landing.html#pricing" },
+                  { label: 'Home', href: "/#home" },
+                  { label: 'Industries', href: "/#features" },
+                  { label: 'About', href: "/#about" },
+                  { label: 'Pricing', href: "/#pricing" },
                 ].map(({ label, href }) => (
                   <li key={label}>
                     <a
@@ -92,7 +92,7 @@ const Footer = () => {
                 {[
                   { label: 'Careers', href: '/careers' },
                   { label: 'My Applications', href: '/applications' },
-                  { label: 'Privacy Policy', href: "policy.html" },
+                  { label: 'Privacy Policy', href: "/policy" },
                 ].map(({ label, href }) => (
                   <li key={label}>
                     <a
@@ -113,8 +113,8 @@ const Footer = () => {
               <h4 className="mb-9 text-lg font-semibold text-gray-900">Our Services</h4>
               <ul className="space-y-1">
                 {[
-                  { label: 'Indoor Navigation', href: "landing.html#about" },
-                  { label: 'Virtual Assistance', href: "landing.html#about" },
+                  { label: 'Indoor Navigation', href: "/#about" },
+                  { label: 'Virtual Assistance', href: "/#about" },
                 ].map(({ label, href }) => (
                   <li key={label}>
                     <a
@@ -178,7 +178,7 @@ const Footer = () => {
           </p>
           <div className="flex items-center gap-6">
             <a
-              href="policy.html"
+              href="/policy"
               className="text-sm text-gray-600 hover:text-primary transition-colors"
             >
               Privacy Policy

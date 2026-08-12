@@ -13,12 +13,7 @@
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://www.bootway.in/index.html</loc>
-  <lastmod>2024-11-05T18:06:18+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.bootway.in/policy.html</loc>
+  <loc>https://www.bootway.in/policy</loc>
   <lastmod>2024-11-05T18:06:18+00:00</lastmod>
   <priority>0.80</priority>
 </url>
