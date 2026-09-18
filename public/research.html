@@ -1,78 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indoor Navigation References</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo/favicon.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo/favicon.png" />
-    <link rel="apple-touch-icon" href="assets/images/logo/favicon.png" />
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research — BootWay Indoor Navigation</title>
+  <meta name="description" content="Research validating the need for digital indoor navigation in hospitals and complex facilities." />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/images/logo/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/site.css" />
+  <style>
+    .page-hero {
+      padding: calc(var(--header-h) + 3rem) 0 1rem;
+    }
+    .research-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.35rem;
+      max-width: 720px;
+    }
+    .research-list a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.15rem 0;
+      border-top: 1px solid var(--line);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ink);
+      transition: color 0.2s ease;
+    }
+    .research-list a:hover {
+      color: var(--brand);
+    }
+    .research-arrow {
+      width: 21px;
+      height: 21px;
+      flex: 0 0 auto;
+      color: var(--brand);
+      stroke: currentColor;
+      stroke-width: 1.8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.2s ease;
+    }
+    .research-list a:hover .research-arrow {
+      transform: translate(2px, -2px);
+    }
+  </style>
 </head>
-<body class="bg-gray-100 font-sans">
-    <div class="max-w-3xl mx-auto py-10 px-6">
-        <!-- Header -->
-        <div class="text-center mb-8">
-            <h1 class="text-4xl font-bold text-gray-800">Indoor Navigation References</h1>
-            <p class="text-gray-600 mt-2">Explore the research and studies that validate the importance and need for indoor navigation systems.</p>
-        </div>
-
-        <!-- Links Container -->
-        <div class="bg-white shadow-lg rounded-lg p-6">
-            <ul>
-                <!-- Research Paper Link -->
-                <li class="mb-4">
-                    <a href="https://hvt-journal.com/articles/art499" target="_blank" 
-                        class="flex items-center justify-between bg-blue-100 hover:bg-blue-200 p-4 rounded-lg shadow-sm transition-all">
-                        <span class="text-blue-800 font-medium">Research Paper 1: Patients’ Perception of Signage System</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                    </a>
-                </li>
-
-                <!-- Second Reference -->
-                <li class="mb-4">
-                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11345034" target="_blank" 
-                        class="flex items-center justify-between bg-green-100 hover:bg-green-200 p-4 rounded-lg shadow-sm transition-all">
-                        <span class="text-green-800 font-medium">Research Paper 2: Wayfinding Signage in Public Hospitals</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                    </a>
-                </li>
-
-                <!-- Additional Links -->
-                <li class="mb-4">
-                    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7908200" target="_blank" 
-                        class="flex items-center justify-between bg-yellow-100 hover:bg-yellow-200 p-4 rounded-lg shadow-sm transition-all">
-                        <span class="text-yellow-800 font-medium">Research Paper 3: Navigational Needs and Preferences of Hospital Patients and Visitors</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                    </a>
-                </li>
-
-                <!-- Additional Links -->
-                <li class="mb-4">
-                    <a href="https://www.pickcel.com/blog/digital-wayfinding-in-hospitals" target="_blank" 
-                        class="flex items-center justify-between bg-yellow-100 hover:bg-yellow-200 p-4 rounded-lg shadow-sm transition-all">
-                        <span class="text-yellow-800 font-medium">Article: Why digital wayfinding is beneficial for hospital communications</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                        </svg>
-                    </a>
-                </li>
-
-                <!-- Add More Links as Needed -->
-            </ul>
-        </div>
-
-        <!-- Footer -->
-        <div class="text-center mt-8">
-            <p class="text-gray-500 text-sm">&copy; 2024 BootWay | Empowering Navigation Everywhere</p>
-        </div>
+<body>
+  <header class="site-header is-scrolled" role="banner">
+    <div class="header-inner">
+      <a href="/" class="brand-link" aria-label="BootWay Home">
+        <img src="assets/images/logo/logo-w-re.png" alt="BootWay" width="150" height="40" />
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="/#home">Home</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#features">Industries</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/#contact">Contact Us</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn-primary nav-cta" href="/#contact">Talk to us</a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+      <a href="/#home">Home</a>
+      <a href="/#about">About</a>
+      <a href="/#features">Industries</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/#contact">Contact Us</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow">Research</span>
+        <h1 style="font-size: clamp(2.3rem, 5vw, 3.4rem);">Why indoor navigation matters</h1>
+        <p class="lead">A short reading list behind digital wayfinding—kept here so the main site stays light.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 1.5rem;">
+      <div class="container">
+        <ul class="research-list">
+          <li>
+            <a href="https://hvt-journal.com/articles/art499" target="_blank" rel="noopener noreferrer">
+              <span>Patients’ Perception of Signage Systems</span>
+              <svg class="research-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11345034" target="_blank" rel="noopener noreferrer">
+              <span>Wayfinding Signage in Public Hospitals</span>
+              <svg class="research-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7908200" target="_blank" rel="noopener noreferrer">
+              <span>Navigational Needs of Hospital Patients and Visitors</span>
+              <svg class="research-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.pickcel.com/blog/digital-wayfinding-in-hospitals" target="_blank" rel="noopener noreferrer">
+              <span>Why digital wayfinding helps hospital communications</span>
+              <svg class="research-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg>
+            </a>
+          </li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="/#contact">Contact BootWay</a>
+          <a class="btn btn-secondary" href="/">Back to home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" aria-label="BootWay Home">
+            <img src="assets/images/logo/logo-b-re.png" alt="BootWay" width="160" height="40" loading="lazy" />
+          </a>
+          <p>We create smooth indoor navigation experiences for complex venues across India.</p>
+        </div>
+        <div class="footer-col">
+          <h4>About Us</h4>
+          <ul>
+            <li><a href="/#home">Home</a></li>
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#features">Industries</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/policy">Privacy policy</a></li>
+            <li><a href="/careers">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="/#contact">Contact Us</a></li>
+            <li><a href="mailto:support@bootway.in">support@bootway.in</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <a href="/policy">Privacy policy</a>
+        <p>&copy; <span id="year"></span> BootWay iNaaS Private Limited</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileNav = document.getElementById("mobileNav");
+    menuToggle.addEventListener("click", () => {
+      const open = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!open));
+      mobileNav.classList.toggle("is-open", !open);
+    });
+  </script>
 </body>
 </html>
