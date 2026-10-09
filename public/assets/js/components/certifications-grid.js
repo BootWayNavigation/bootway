@@ -54,9 +54,9 @@
     },
     {
       title: "Trademark",
-      detail: "Application filed",
-      icon: "assets/images/certifications/registry/trademark-full.png",
-      alt: "Intellectual Property India logo",
+      detail: "IP India · Application filed",
+      icon: "assets/images/certifications/registry/trademark-mark.png",
+      alt: "Intellectual Property India mark",
     },
   ];
 
@@ -97,12 +97,10 @@
       const registry = REGISTRY.map(function (item) {
         return (
           '<li class="cert-registry-item">' +
-          '<span class="cert-registry-item__icon">' +
+          '<span class="cert-registry-item__mark" aria-hidden="true">' +
           '<img src="' +
           escapeAttr(item.icon) +
-          '" alt="' +
-          escapeAttr(item.alt) +
-          '" width="120" height="48" loading="lazy" />' +
+          '" alt="" width="168" height="100" loading="lazy" decoding="async" />' +
           "</span>" +
           '<span class="cert-registry-item__copy">' +
           "<strong>" +
@@ -121,9 +119,12 @@
         '<div class="cert-board__gallery">' +
         cards +
         "</div>" +
+        '<div class="cert-board__registry-wrap">' +
+        '<p class="cert-board__registry-label">Company registry</p>' +
         '<ul class="cert-board__registry" aria-label="Company registry">' +
         registry +
         "</ul>" +
+        "</div>" +
         "</div>";
     }
   }
