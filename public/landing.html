@@ -81,6 +81,8 @@
   </script>
 
   <link rel="stylesheet" href="assets/css/site.css" />
+  <script src="assets/js/components/stat-card.js"></script>
+  <script src="assets/js/components/projects-board.js"></script>
 </head>
 <body>
   <!-- Reusable icon definitions -->
@@ -136,6 +138,22 @@
         <circle cx="12" cy="12" r="9" />
         <path d="m8 12 2.5 2.5L16 9" />
       </symbol>
+      <symbol id="i-area" viewBox="0 0 24 24">
+        <path d="M3 5a2 2 0 0 1 2-2h4v2H5v4H3zm10-2h4a2 2 0 0 1 2 2v4h-2V5h-4zM3 15h2v4h4v2H5a2 2 0 0 1-2-2zm16 0h2v4a2 2 0 0 1-2 2h-4v-2h4z" />
+        <path d="M8 8h8v8H8z" />
+      </symbol>
+      <symbol id="i-live" viewBox="0 0 24 24">
+        <path d="M12 3 4 7v4c0 5 3.4 9.4 8 10.5C16.6 20.4 20 16 20 11V7z" />
+        <path d="m9 12 2 2 4-4" />
+      </symbol>
+      <symbol id="i-prototype" viewBox="0 0 24 24">
+        <path d="M9 3h6v4H9zM8 7h8l1.5 3H6.5zM7 10h10v9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2z" />
+        <path d="M10 14h4M12 12v6" />
+      </symbol>
+      <symbol id="i-document" viewBox="0 0 24 24">
+        <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+        <path d="M14 2v6h6M9 13h6M9 17h4" />
+      </symbol>
       <symbol id="i-mail" viewBox="0 0 24 24">
         <rect width="20" height="16" x="2" y="4" rx="2" />
         <path d="m22 7-10 6L2 7" />
@@ -165,6 +183,7 @@
           <li><a class="ud-menu-scroll" href="#about">About</a></li>
           <li><a class="ud-menu-scroll" href="#features">Industries</a></li>
           <li><a class="ud-menu-scroll" href="#pricing">Pricing</a></li>
+          <li><a href="/certifications">Certifications</a></li>
           <li><a class="ud-menu-scroll" href="#contact">Contact Us</a></li>
         </ul>
       </nav>
@@ -182,6 +201,7 @@
       <a href="#about">About</a>
       <a href="#features">Industries</a>
       <a href="#pricing">Pricing</a>
+      <a href="/certifications">Certifications</a>
       <a href="#contact">Contact Us</a>
       <a class="btn btn-primary mobile-nav-cta" href="#contact">Talk to our team</a>
     </nav>
@@ -238,6 +258,15 @@
           </div>
           <figcaption>A visitor being guided through a hospital corridor — step count and next turn on screen.</figcaption>
         </figure>
+      </div>
+
+      <div class="container">
+        <div class="about-stats reveal" role="list" aria-label="BootWay at a glance">
+          <stat-card icon="i-area" value="18+ lakh" description="sq ft of indoor navigation built"></stat-card>
+          <stat-card icon="i-live" value="2" description="projects completed and live"></stat-card>
+          <stat-card icon="i-prototype" value="4+" description="prototypes delivered and tested"></stat-card>
+          <stat-card icon="i-document" value="LOI" description="received from SMS Hospital, Dhanvantri OPD"></stat-card>
+        </div>
       </div>
     </section>
 
@@ -375,6 +404,13 @@
       </div>
     </section>
 
+    <!-- ============ Projects ============ -->
+    <section class="section" id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <projects-board></projects-board>
+      </div>
+    </section>
+
     <!-- ============ Pricing ============ -->
     <section class="section" id="pricing" aria-labelledby="pricing-heading">
       <div class="container">
@@ -433,8 +469,143 @@
       </div>
     </section>
 
+    <!-- ============ Media coverage ============ -->
+    <section class="section section-soft" id="media" aria-labelledby="media-heading">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">In the news</span>
+          <h2 id="media-heading">Seen in print across Rajasthan</h2>
+          <p class="lead">Local press and partners covering BootWay’s indoor navigation work in hospitals and campuses.</p>
+        </div>
+
+        <article class="media-feature reveal">
+          <figure class="media-feature__clipping">
+            <div class="media-feature__frame">
+              <img
+                src="assets/images/media/dainik-bhaskar-clipping.png"
+                alt="Dainik Bhaskar newspaper clipping about BootWay indoor navigation"
+                width="736"
+                height="702"
+                loading="lazy"
+              />
+            </div>
+            <figcaption>Dainik Bhaskar · Jaipur · 1 Oct 2026 · Page 7</figcaption>
+          </figure>
+
+          <div class="media-feature__body">
+            <p class="media-feature__kicker">
+              <img
+                class="media-feature__outlet"
+                src="assets/images/media/dainik-bhaskar-logo.png"
+                alt=""
+                width="160"
+                height="37"
+                loading="lazy"
+              />
+              <span>Featured coverage</span>
+            </p>
+            <blockquote>
+              <p>“BootWay reaches 18 lakh sq ft, receives LOI from SMS”</p>
+              <cite>Headline, translated from Hindi</cite>
+            </blockquote>
+            <p class="media-feature__summary">
+              The report profiles BootWay as the Jaipur startup helping patients and visitors find
+              their way in hospitals and large premises — developed under Arnav Sharma and Samarth Gupta.
+            </p>
+            <ul class="media-feature__points">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg> 18 lakh+ sq ft of indoor navigation built</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg> No app needed — routes open in the browser</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg> Multi-floor guidance with 360° and AR</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg> LOI from SMS Hospital, Dhanvantri OPD</li>
+            </ul>
+          </div>
+        </article>
+
+        <div class="media-more reveal">
+          <h3 class="media-more__heading">More coverage and recognition</h3>
+          <ul class="media-more__grid">
+            <li class="media-more__card">
+              <span class="media-more__mark" aria-hidden="true">RP</span>
+              <div>
+                <h4>Rajasthan Patrika</h4>
+                <p>Coverage of BootWay’s app-free indoor navigation</p>
+                <span class="media-more__meta">28 Jan 2026</span>
+              </div>
+            </li>
+            <li class="media-more__card">
+              <span class="media-more__mark" aria-hidden="true">LUB</span>
+              <div>
+                <h4>LUB Skill Hub</h4>
+                <p>Sohan Singh Smriti Kaushal Vikas Kendra, Laghu Udyog Bharati</p>
+                <span class="media-more__meta">17 Aug 2026</span>
+              </div>
+            </li>
+            <li class="media-more__card">
+              <span class="media-more__mark" aria-hidden="true">IIH</span>
+              <div>
+                <h4>IIHMR Startups</h4>
+                <p>Acknowledged BootWay’s prototype delivery in Sanganer, Jaipur</p>
+                <span class="media-more__meta">Recognition</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Accredited ============ -->
+    <section class="accredited-bar" id="accredited" aria-labelledby="accredited-heading">
+      <div class="container reveal">
+        <div class="accredited-bar__head">
+          <h2 id="accredited-heading">Accredited</h2>
+          <p>Independent recognition for security, startup status, and accessibility.</p>
+        </div>
+        <ul class="accredited-bar__list">
+          <li>
+            <a href="/certifications" class="accredited-bar__item">
+              <img
+                src="assets/images/certifications/iso-27001-logo.png"
+                alt="ISO 27001:2022 Certified — International Organization for Standardization"
+                width="96"
+                height="96"
+                loading="lazy"
+              />
+              <span class="accredited-bar__name">ISO 27001:2022</span>
+              <span class="accredited-bar__meta">Security certified</span>
+            </a>
+          </li>
+          <li>
+            <a href="/certifications" class="accredited-bar__item">
+              <img
+                src="assets/images/certifications/startup-india-badge.svg"
+                alt="Startup India DPIIT recognised seal"
+                width="88"
+                height="88"
+                loading="lazy"
+              />
+              <span class="accredited-bar__name">Startup India</span>
+              <span class="accredited-bar__meta">DPIIT recognised</span>
+            </a>
+          </li>
+          <li>
+            <a href="/certifications" class="accredited-bar__item">
+              <img
+                src="assets/images/certifications/pwd-badge.svg"
+                alt="PwD accessibility validated seal"
+                width="88"
+                height="88"
+                loading="lazy"
+              />
+              <span class="accredited-bar__name">PwD Validated</span>
+              <span class="accredited-bar__meta">Accessibility checked</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <!-- ============ Contact ============ -->
-    <section class="section section-soft" id="contact" aria-labelledby="contact-heading">
+    <section class="section" id="contact" aria-labelledby="contact-heading">
       <div class="container contact-layout">
         <div class="reveal">
           <span class="eyebrow">Contact Us</span>
@@ -546,12 +717,15 @@
             <li><a href="#features">Industries</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#accredited">Accredited</a></li>
+            <li><a href="#media">Media coverage</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Quick Links</h4>
           <ul>
+            <li><a href="/certifications">Certifications</a></li>
             <li><a href="/policy">Privacy policy</a></li>
             <li><a href="/careers">Careers</a></li>
             <li><a href="/research">Research</a></li>

@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 // Static pages that live in /public but are served under an extension-less URL.
-const staticPages = ['policy', 'research', 'calculator'];
+const staticPages = ['policy', 'research', 'calculator', 'certifications'];
 
 const nextConfig = {
   images: {

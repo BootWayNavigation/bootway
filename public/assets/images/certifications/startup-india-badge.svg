@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Startup India DPIIT Recognised">
+  <circle cx="60" cy="60" r="57" fill="#fff" stroke="#d96b16" stroke-width="4"/>
+  <circle cx="60" cy="60" r="46" fill="#e87722"/>
+  <circle cx="60" cy="60" r="40" fill="none" stroke="#fff" stroke-width="1.25" opacity="0.45"/>
+  <text x="60" y="52" text-anchor="middle" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="800" letter-spacing="0.8">STARTUP</text>
+  <text x="60" y="68" text-anchor="middle" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="800" letter-spacing="0.8">INDIA</text>
+  <text x="60" y="86" text-anchor="middle" fill="#ffe4c8" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700" letter-spacing="1.5">DPIIT</text>
+</svg>
