@@ -9,7 +9,7 @@
 (function () {
   "use strict";
 
-  /** @type {{ title: string, badge: string, tone: "live"|"progress"|"delivered", items: { name: string, detail: string }[] }[]} */
+  /** @type {{ title: string, badge: string, tone: "live"|"progress"|"delivered", items: { name: string, detail: string, tourUrl?: string }[] }[]} */
   const PROJECT_GROUPS = [
     {
       title: "Completed",
@@ -20,6 +20,7 @@
         {
           name: "Laghu Udyog Bharati Skill Development Centre",
           detail: "Sitapura, Jaipur",
+          tourUrl: "https://lub.vt.bootway.in",
         },
       ],
     },
@@ -79,6 +80,19 @@
     const delayClass = index > 0 ? " reveal-" + index : "";
     const items = (group.items || [])
       .map(function (item) {
+        const tourLink = item.tourUrl
+          ? '<a class="projects-board__tour" href="' +
+            escapeHtml(item.tourUrl) +
+            '" target="_blank" rel="noopener noreferrer">' +
+            '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+            '<circle cx="12" cy="12" r="9"/>' +
+            '<path d="M3 12h18"/>' +
+            '<ellipse cx="12" cy="12" rx="4" ry="9"/>' +
+            "</svg>" +
+            "Open virtual tour" +
+            "</a>"
+          : "";
+
         return (
           "<li>" +
           '<p class="projects-board__name">' +
@@ -87,6 +101,7 @@
           '<p class="projects-board__detail">' +
           escapeHtml(item.detail) +
           "</p>" +
+          tourLink +
           "</li>"
         );
       })
