@@ -32,7 +32,6 @@
           name: "SMS Hospital, Dhanvantri OPD",
           detail: "With DoIT&C, Govt. of Rajasthan · LOI received",
         },
-        { name: "Suresh Gyan Vihar University", detail: "Jaipur" },
       ],
     },
     {
