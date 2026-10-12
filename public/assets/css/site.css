@@ -634,6 +634,146 @@ p:last-child {
   background: var(--white);
 }
 
+/* ---------- Trusted institutions marquee ---------- */
+.logo-marquee {
+  --logo-h: clamp(4.75rem, 11vw, 7.25rem);
+  --logo-w: clamp(8.75rem, 20vw, 13.5rem);
+  --logo-gap: clamp(2.5rem, 6vw, 4.5rem);
+  padding: clamp(2rem, 4.5vw, 3.25rem) 0 clamp(2.35rem, 5vw, 3.5rem);
+  background:
+    linear-gradient(180deg, rgba(47, 98, 245, 0.035), transparent 60%),
+    var(--paper);
+  border-block: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.logo-marquee__head {
+  text-align: center;
+  margin-bottom: clamp(1.25rem, 3vw, 1.85rem);
+}
+
+.logo-marquee__label {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: clamp(0.78rem, 1.6vw, 0.9rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+.logo-marquee__viewport {
+  position: relative;
+  overflow: hidden;
+  padding-block: 0.25rem;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 5%,
+    #000 95%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 5%,
+    #000 95%,
+    transparent 100%
+  );
+}
+
+.logo-marquee__track {
+  display: flex;
+  width: max-content;
+  gap: 0;
+  animation: logo-marquee-scroll 42s linear infinite;
+  will-change: transform;
+}
+
+.logo-marquee__viewport:hover .logo-marquee__track,
+.logo-marquee__viewport:focus-within .logo-marquee__track {
+  animation-play-state: paused;
+}
+
+.logo-marquee__group {
+  display: flex;
+  align-items: center;
+  gap: var(--logo-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem clamp(1.25rem, 3.5vw, 2.25rem);
+}
+
+.logo-marquee__item {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: var(--logo-w);
+  height: calc(var(--logo-h) + 0.5rem);
+}
+
+.logo-marquee__item--wide {
+  width: clamp(11rem, 26vw, 17rem);
+}
+
+.logo-marquee__item img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: var(--logo-h);
+  object-fit: contain;
+  filter: grayscale(0.08);
+  opacity: 0.94;
+  transition: filter 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+
+.logo-marquee__item:hover img {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+@keyframes logo-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 639px) {
+  .logo-marquee {
+    --logo-h: clamp(4.25rem, 18vw, 5.5rem);
+    --logo-w: clamp(7.5rem, 34vw, 10rem);
+    --logo-gap: clamp(1.75rem, 8vw, 2.75rem);
+  }
+
+  .logo-marquee__item--wide {
+    width: clamp(9.5rem, 48vw, 13rem);
+  }
+
+  .logo-marquee__track {
+    animation-duration: 32s;
+  }
+}
+
+@media (min-width: 1024px) {
+  .logo-marquee {
+    --logo-h: clamp(6.25rem, 8vw, 8rem);
+    --logo-w: clamp(11rem, 14vw, 14.5rem);
+  }
+
+  .logo-marquee__item--wide {
+    width: clamp(14rem, 18vw, 18.5rem);
+  }
+
+  .logo-marquee__track {
+    animation-duration: 48s;
+  }
+}
+
 /* ---------- About / How it works ---------- */
 .hero .about-stats {
   margin-top: clamp(2rem, 4vw, 2.75rem);
@@ -2420,10 +2560,27 @@ stat-card,
   .tour-feature__frame,
   .tour-gallery__item,
   .hero-copy > *,
-  .hero-media {
+  .hero-media,
+  .logo-marquee__track {
     animation: none !important;
     transition: none !important;
     opacity: 1;
     transform: none;
+  }
+
+  .logo-marquee__viewport {
+    overflow-x: auto;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .logo-marquee__track {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .logo-marquee__group[aria-hidden="true"] {
+    display: none;
   }
 }
