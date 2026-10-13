@@ -134,6 +134,31 @@
       <symbol id="i-office" viewBox="0 0 24 24">
         <path d="M3 21h18M6 21V3h12v18M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-3h4v3" />
       </symbol>
+      <symbol id="i-metro" viewBox="0 0 24 24">
+        <rect width="14" height="12" x="5" y="3" rx="3" />
+        <path d="M5 11h14M9 15v3M15 15v3M8 21h8M9 7h2M13 7h2" />
+      </symbol>
+      <symbol id="i-airport" viewBox="0 0 24 24">
+        <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5L3 8.3c-.2.5 0 1 .4 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 2.7 5.6c.3.5.8.6 1.3.4l1.6-.7c.4-.2.6-.6.5-1.1Z" />
+      </symbol>
+      <symbol id="i-expo" viewBox="0 0 24 24">
+        <path d="M4 20V10l8-5 8 5v10" />
+        <path d="M9 20v-6h6v6M12 5v3" />
+      </symbol>
+      <symbol id="i-factory" viewBox="0 0 24 24">
+        <path d="M2 20h20M4 20V10l4 3V10l4 3V8h8v12" />
+        <path d="M14 12h2M18 12h2M14 16h2M18 16h2" />
+      </symbol>
+      <symbol id="i-religious" viewBox="0 0 24 24">
+        <path d="M12 2v4M10 4h4" />
+        <path d="M6 22V12l6-4 6 4v10" />
+        <path d="M10 22v-5h4v5" />
+      </symbol>
+      <symbol id="i-tourism" viewBox="0 0 24 24">
+        <path d="M14.5 4h-5L7 10h10z" />
+        <circle cx="12" cy="15" r="5" />
+        <circle cx="12" cy="15" r="2" />
+      </symbol>
       <symbol id="i-check" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="9" />
         <path d="m8 12 2.5 2.5L16 9" />
@@ -426,49 +451,123 @@
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">Industries</span>
-          <h2 id="features-heading">Built for the places people get lost</h2>
-          <p class="lead">The same calm experience, shaped around how each building actually moves.</p>
+          <h2 id="features-heading">Every venue type has a different wayfinding problem. We start there.</h2>
+          <p class="lead">The same calm BootWay experience, shaped around how each space actually moves people.</p>
         </div>
 
         <div class="industry-grid">
           <article class="industry reveal">
-            <span class="icon-badge">
-              <svg class="icon" aria-hidden="true"><use href="#i-hospital" /></svg>
-            </span>
-            <h3>Healthcare</h3>
-            <p>Guide patients from the gate to the right OPD, lab, or ward — reducing anxiety, delays, and repeated
-              questions at every desk.</p>
-            <span class="industry-tag">Hospitals · Diagnostic centres</span>
+            <img class="industry-badge" src="assets/images/industries/metro-badge.jpg" alt="" aria-hidden="true" width="160" height="160" loading="lazy" />
+            <div class="industry-body">
+              <span class="icon-badge">
+                <svg class="icon" aria-hidden="true"><use href="#i-metro" /></svg>
+              </span>
+              <h3>Metro &amp; Railways</h3>
+              <p>Interchange navigation, exits, platforms, and station wayfinding for the highest-frequency movement
+                spaces.</p>
+              <span class="industry-tag">Metro · Rail hubs</span>
+            </div>
           </article>
 
           <article class="industry reveal reveal-1">
-            <span class="icon-badge">
-              <svg class="icon" aria-hidden="true"><use href="#i-campus" /></svg>
-            </span>
-            <h3>Education</h3>
-            <p>Help students, parents, and visitors find lecture halls, labs, and admin blocks across a spread-out
-              campus.</p>
-            <span class="industry-tag">Universities · Institutes</span>
+            <img class="industry-badge" src="assets/images/industries/hospital-badge.jpg" alt="" aria-hidden="true" width="160" height="160" loading="lazy" />
+            <div class="industry-body">
+              <span class="icon-badge">
+                <svg class="icon" aria-hidden="true"><use href="#i-hospital" /></svg>
+              </span>
+              <h3>Hospital</h3>
+              <p>Guide patients from the gate to the right OPD, lab, or ward — reducing anxiety, delays, and repeated
+                questions at every desk.</p>
+              <span class="industry-tag">Hospitals · Diagnostic centres</span>
+            </div>
           </article>
 
           <article class="industry reveal reveal-2">
-            <span class="icon-badge">
-              <svg class="icon" aria-hidden="true"><use href="#i-retail" /></svg>
-            </span>
-            <h3>Tourism &amp; retail</h3>
-            <p>Let guests explore malls, museums, and attractions at their own pace, without hunting for a floor
-              directory.</p>
-            <span class="industry-tag">Malls · Museums · Venues</span>
+            <img class="industry-badge" src="assets/images/industries/university-badge.jpg" alt="" aria-hidden="true" width="160" height="160" loading="lazy" />
+            <div class="industry-body">
+              <span class="icon-badge">
+                <svg class="icon" aria-hidden="true"><use href="#i-campus" /></svg>
+              </span>
+              <h3>Universities</h3>
+              <p>Help students, parents, and visitors find lecture halls, labs, and admin blocks across a spread-out
+                campus.</p>
+              <span class="industry-tag">Universities · Institutes</span>
+            </div>
           </article>
 
           <article class="industry reveal reveal-3">
-            <span class="icon-badge">
-              <svg class="icon" aria-hidden="true"><use href="#i-office" /></svg>
-            </span>
-            <h3>Corporate</h3>
-            <p>Welcome employees and clients into offices and business parks with directions that reach the exact
-              cabin.</p>
-            <span class="industry-tag">Offices · Business parks</span>
+            <img class="industry-badge" src="assets/images/industries/expo-badge.jpg" alt="" aria-hidden="true" width="160" height="160" loading="lazy" />
+            <div class="industry-body">
+              <span class="icon-badge">
+                <svg class="icon" aria-hidden="true"><use href="#i-expo" /></svg>
+              </span>
+              <h3>Events &amp; Exhibitions</h3>
+              <p>Booth discovery, hall routing, and visitor flow across exhibition centres and large event venues.</p>
+              <span class="industry-tag">Expos · Conventions</span>
+            </div>
+          </article>
+
+          <article class="industry reveal">
+            <img class="industry-badge" src="assets/images/industries/mall-badge.jpg" alt="" aria-hidden="true" width="160" height="160" loading="lazy" />
+            <div class="industry-body">
+              <span class="icon-badge">
+                <svg class="icon" aria-hidden="true"><use href="#i-retail" /></svg>
+              </span>
+              <h3>Mall</h3>
+              <p>Let shoppers find stores, food courts, and facilities without hunting for a floor directory.</p>
+              <span class="industry-tag">Shopping malls · Mixed-use</span>
+            </div>
+          </article>
+
+          <article class="industry reveal reveal-1">
+            <img class="industry-badge" src="assets/images/industries/airport-badge.jpg" alt="" aria-hidden="true" width="160" height="160" loading="lazy" />
+            <div class="industry-body">
+              <span class="icon-badge">
+                <svg class="icon" aria-hidden="true"><use href="#i-airport" /></svg>
+              </span>
+              <h3>Airport</h3>
+              <p>Passenger guidance from curb to gate — terminals, transfers, and commercial discovery along the way.</p>
+              <span class="industry-tag">Airports · Terminals</span>
+            </div>
+          </article>
+
+          <article class="industry reveal reveal-2">
+            <img class="industry-badge" src="assets/images/industries/factory-badge.jpg" alt="" aria-hidden="true" width="160" height="160" loading="lazy" />
+            <div class="industry-body">
+              <span class="icon-badge">
+                <svg class="icon" aria-hidden="true"><use href="#i-factory" /></svg>
+              </span>
+              <h3>Factories &amp; Manufacturing</h3>
+              <p>Guide workers, contractors, and visitors through large plants — from gates and bays to lines, stores,
+                and safety zones.</p>
+              <span class="industry-tag">Factories · Industrial campuses</span>
+            </div>
+          </article>
+
+          <article class="industry reveal reveal-3">
+            <img class="industry-badge" src="assets/images/industries/religious-badge.jpg" alt="" aria-hidden="true" width="160" height="160" loading="lazy" />
+            <div class="industry-body">
+              <span class="icon-badge">
+                <svg class="icon" aria-hidden="true"><use href="#i-religious" /></svg>
+              </span>
+              <h3>Religious Places</h3>
+              <p>Help devotees and visitors find darshan queues, halls, facilities, and exits across temples, shrines,
+                and pilgrimage complexes.</p>
+              <span class="industry-tag">Temples · Pilgrimage sites</span>
+            </div>
+          </article>
+
+          <article class="industry reveal">
+            <img class="industry-badge" src="assets/images/industries/tourism-badge.jpg" alt="" aria-hidden="true" width="160" height="160" loading="lazy" />
+            <div class="industry-body">
+              <span class="icon-badge">
+                <svg class="icon" aria-hidden="true"><use href="#i-tourism" /></svg>
+              </span>
+              <h3>Tourism Spots</h3>
+              <p>Let guests explore museums, monuments, and attractions at their own pace — without hunting for the
+                next landmark.</p>
+              <span class="industry-tag">Museums · Monuments · Attractions</span>
+            </div>
           </article>
         </div>
       </div>

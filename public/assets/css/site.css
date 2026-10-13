@@ -994,49 +994,88 @@ stat-card,
 /* ---------- Industries ---------- */
 .industry-grid {
   display: grid;
-  gap: 1rem;
+  gap: 1.35rem;
   grid-template-columns: 1fr;
+  padding-top: 0.75rem;
 }
 
 .industry {
+  position: relative;
   display: grid;
-  gap: 0.9rem;
-  padding: 1.85rem 1.75rem;
+  gap: 0;
+  padding: 1.65rem 1.5rem 1.5rem;
   background: var(--white);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: calc(var(--radius) + 4px);
   box-shadow: var(--shadow-sm);
+  overflow: visible;
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
+.industry-badge {
+  position: absolute;
+  top: -1.1rem;
+  right: -0.85rem;
+  width: clamp(4.5rem, 12vw, 5.75rem);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 18px;
+  pointer-events: none;
+  z-index: 2;
+  filter: drop-shadow(0 12px 22px rgba(19, 28, 46, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.industry-body {
+  display: grid;
+  gap: 0.75rem;
+  padding-right: 3.25rem;
+  min-height: 100%;
+}
+
 .industry .icon-badge {
-  width: 58px;
-  height: 58px;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
 }
 
 .industry .icon-badge .icon {
-  width: 27px;
-  height: 27px;
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .industry:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow);
   border-color: rgba(47, 98, 245, 0.28);
 }
 
+.industry:hover .industry-badge {
+  transform: translateY(-4px) scale(1.04);
+}
+
 .industry h3 {
   margin: 0;
-  font-size: 1.42rem;
+  font-size: 1.28rem;
+  letter-spacing: -0.02em;
 }
 
 .industry p {
   margin: 0;
-  font-size: 1.05rem;
+  font-size: 1.02rem;
+  line-height: 1.55;
 }
 
 .industry-tag {
-  font-size: 0.92rem;
+  margin-top: auto;
+  padding-top: 0.25rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--brand);
 }
@@ -2367,7 +2406,8 @@ stat-card,
   }
 
   .industry-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem 1.25rem;
   }
 
   .projects-board__grid {
@@ -2423,6 +2463,20 @@ stat-card,
 }
 
 @media (min-width: 900px) {
+  .industry-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.75rem 1.35rem;
+    padding-top: 1.1rem;
+  }
+
+  .industry {
+    padding: 1.75rem 1.55rem 1.55rem;
+  }
+
+  .industry-body {
+    padding-right: 3.5rem;
+  }
+
   .pricing-grid {
     grid-template-columns: repeat(3, 1fr);
   }
