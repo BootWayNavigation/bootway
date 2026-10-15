@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "bootway.in" }],
+      "destination": "https://www.bootway.in/:path*",
+      "permanent": true
+    }
+  ]
+}
