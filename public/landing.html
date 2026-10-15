@@ -1226,7 +1226,42 @@ crossorigin="anonymous"></script>
         });
       });
 
-      backTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+      backTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        if (history.replaceState) {
+          history.replaceState(null, "", window.location.pathname + window.location.search);
+        }
+      });
+
+      // Smooth-scroll to in-page sections without showing #hash in the URL
+      const cleanUrl = () => {
+        if (history.replaceState) {
+          history.replaceState(null, "", window.location.pathname + window.location.search);
+        }
+      };
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", (event) => {
+          const href = anchor.getAttribute("href");
+          if (!href || href === "#") return;
+          const target = document.querySelector(href);
+          if (!target) return;
+          event.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          cleanUrl();
+        });
+      });
+
+      // Deep links like /#contact still scroll, then hide the hash
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+          requestAnimationFrame(() => {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            cleanUrl();
+          });
+        }
+      }
 
       const observer = new IntersectionObserver(
         (entries) => {

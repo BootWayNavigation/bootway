@@ -45,10 +45,10 @@
           behavior: 'smooth',
           block: 'start'
         });
-        
-        // Update URL without jumping
-        if (history.pushState) {
-          history.pushState(null, null, href);
+
+        // Keep the address bar clean (no /#section)
+        if (history.replaceState) {
+          history.replaceState(null, '', window.location.pathname + window.location.search);
         }
       }
     });
