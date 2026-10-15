@@ -113,8 +113,8 @@ const Footer = () => {
               <h4 className="mb-9 text-lg font-semibold text-gray-900">Our Services</h4>
               <ul className="space-y-1">
                 {[
-                  { label: 'Indoor Navigation', href: "/#about" },
-                  { label: 'Virtual Assistance', href: "/#about" },
+                  { label: 'Indoor Navigation', href: "/hospital-navigation" },
+                  { label: 'Virtual Tour', href: "/virtual-tours" },
                 ].map(({ label, href }) => (
                   <li key={label}>
                     <a

@@ -1080,6 +1080,20 @@ stat-card,
   color: var(--brand);
 }
 
+.industry-link {
+  display: inline-block;
+  margin-top: 0.65rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.industry-link:hover {
+  color: var(--brand);
+}
+
 /* ---------- Projects & prototypes ---------- */
 .projects-board {
   display: block;
@@ -1776,6 +1790,185 @@ stat-card,
 .pricing-note a {
   color: var(--brand);
   font-weight: 600;
+}
+
+.pricing-drivers {
+  margin: 1rem auto 0;
+  max-width: 40rem;
+  text-align: center;
+  font-size: 0.98rem;
+  color: var(--muted, #5b6475);
+  line-height: 1.55;
+}
+
+/* ---------- FAQ ---------- */
+.faq-list {
+  display: grid;
+  gap: 0.65rem;
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  padding: 0 1.15rem;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 1.05rem 0;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  float: right;
+  font-weight: 500;
+  color: var(--brand);
+}
+
+.faq-item[open] summary::after {
+  content: "–";
+}
+
+.faq-item p {
+  margin: 0 0 1.05rem;
+  color: var(--muted, #5b6475);
+  line-height: 1.6;
+}
+
+.faq-item a {
+  color: var(--brand);
+  font-weight: 600;
+}
+
+/* ---------- Content / pillar pages ---------- */
+.page-hero {
+  padding: calc(var(--header-h) + 3rem) 0 1.25rem;
+}
+
+.page-hero h1 {
+  font-size: clamp(2.1rem, 4.8vw, 3.35rem);
+  line-height: 1.12;
+  max-width: 18ch;
+}
+
+.content-prose {
+  display: grid;
+  gap: 1.35rem;
+  max-width: 46rem;
+}
+
+.content-prose h2 {
+  font-size: clamp(1.45rem, 2.5vw, 1.85rem);
+  margin-top: 0.5rem;
+}
+
+.content-prose h3 {
+  font-size: 1.15rem;
+  margin-top: 0.25rem;
+}
+
+.content-prose p,
+.content-prose li {
+  color: var(--muted, #5b6475);
+  line-height: 1.65;
+  font-size: 1.05rem;
+}
+
+.content-prose ul,
+.content-prose ol {
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.content-prose a {
+  color: var(--brand);
+  font-weight: 600;
+}
+
+.fact-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.98rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.fact-table th,
+.fact-table td {
+  text-align: left;
+  padding: 0.7rem 0.85rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.fact-table th {
+  font-weight: 600;
+  color: var(--ink);
+  width: 38%;
+}
+
+.fact-table td {
+  color: var(--muted, #5b6475);
+}
+
+.cred-block {
+  display: grid;
+  gap: 1.25rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.cred-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.25rem 1.35rem;
+  background: #fff;
+}
+
+.cred-card h2 {
+  font-size: 1.25rem;
+  margin: 0 0 0.45rem;
+}
+
+.cred-card p {
+  margin: 0 0 0.65rem;
+  color: var(--muted, #5b6475);
+  line-height: 1.6;
+}
+
+.cred-card a {
+  font-weight: 600;
+  color: var(--brand);
+}
+
+.research-finding {
+  border-top: 1px solid var(--line);
+  padding: 1.25rem 0;
+}
+
+.research-finding h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+}
+
+.research-finding p {
+  margin: 0 0 0.55rem;
+}
+
+.research-finding a {
+  font-weight: 600;
+  color: var(--brand);
 }
 
 /* ---------- Virtual tour ---------- */

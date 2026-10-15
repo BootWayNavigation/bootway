@@ -26,8 +26,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <title>BootWay - Find Your Dream Job</title>
-        <meta name="description" content="BootWay - HR Portal for Job Applications and Management" />
+        <title>BootWay | Indoor Navigation Startup, Jaipur</title>
+        <meta name="description" content="BootWay builds app-free indoor navigation for hospitals and campuses. Careers and HR portal for BootWay iNaaS Private Limited, Jaipur." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />
       </head>

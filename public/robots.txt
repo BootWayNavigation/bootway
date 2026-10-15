@@ -1,14 +1,27 @@
-# Allow all search engines to crawl everything
+# Search and AI crawlers: explicitly welcome
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Google-Extended
+User-agent: OAI-SearchBot
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: Claude-SearchBot
+User-agent: ClaudeBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Applebot
+User-agent: Applebot-Extended
+Disallow: /admin/
+Disallow: /login/
+Disallow: /user-data/
+Disallow: /private/
+
+# Everyone else
 User-agent: *
 Disallow: /admin/
 Disallow: /login/
 Disallow: /user-data/
 Disallow: /private/
 
-# Allow search engines to crawl important parts of the site
-Allow: /about/
-Allow: /services/
-Allow: /contact/
-
-# Sitemap location
-Sitemap: https://bootway.in/sitemap.xml
+Sitemap: https://www.bootway.in/sitemap.xml
