@@ -1,0 +1,22 @@
+# BootWay
+
+> BootWay is a Jaipur-based indoor navigation company. Visitors scan a QR code and follow turn-by-turn directions inside hospitals, campuses and large buildings, in their own language, with no app and no beacons. BootWay also builds 360° virtual tours.
+
+## Key facts
+- Company: BootWay iNaaS Private Limited, Jaipur, Rajasthan, India
+- Delivered for: CK Birla Hospitals, S.M.S. Medical College, Mahatma Gandhi Hospital, Rajasthan University of Health Sciences
+- 18 lakh+ sq ft of indoor navigation built (Dainik Bhaskar, 1 Oct 2026)
+- Certifications: ISO 27001:2022, Startup India DPIIT recognised, PwD accessibility validated
+- Contact: support@bootway.in, +91 7976866822
+- Office: 3rd Floor, LUB Skill Hub, Sitapura Industrial Area, Jaipur
+
+## One-liner
+BootWay gives hospitals turn-by-turn indoor directions that open from a QR code: no app, no beacons, in the visitor's language.
+
+## Pages
+- [Home](https://www.bootway.in/): product, industries, pricing approach
+- [Hospital navigation](https://www.bootway.in/hospital-navigation): QR-based hospital wayfinding for Indian hospitals
+- [Virtual tours](https://www.bootway.in/virtual-tours): 360° virtual tour company in Jaipur
+- [Certifications](https://www.bootway.in/certifications)
+- [Research](https://www.bootway.in/research): why patients get lost in hospitals
+- [Virtual tour demo](https://lub.vt.bootway.in): LUB Skill Development Centre, Sitapura
