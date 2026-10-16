@@ -60,10 +60,10 @@ export default function Home() {
         <div className="container-custom">
           <div className="max-w-2xl">
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Find Your Dream Job
+              Careers at BootWay
             </h1>
             <p className="text-white/80 text-lg">
-              Explore exciting opportunities at BootWay and take the next step in your career journey.
+              Join a Jaipur startup building app-free indoor navigation for hospitals and campuses. Explore open roles below.
             </p>
           </div>
         </div>

@@ -91,8 +91,9 @@ const Footer = () => {
               <ul className="space-y-1">
                 {[
                   { label: 'Careers', href: '/careers' },
+                  { label: 'Press', href: '/press' },
                   { label: 'My Applications', href: '/applications' },
-                  { label: 'Privacy Policy', href: "/policy" },
+                  { label: 'Privacy Policy', href: '/policy' },
                 ].map(({ label, href }) => (
                   <li key={label}>
                     <a
@@ -113,8 +114,9 @@ const Footer = () => {
               <h4 className="mb-9 text-lg font-semibold text-gray-900">Our Services</h4>
               <ul className="space-y-1">
                 {[
-                  { label: 'Indoor Navigation', href: "/hospital-navigation" },
-                  { label: 'Virtual Tour', href: "/virtual-tours" },
+                  { label: 'Hospital Navigation', href: '/hospital-navigation' },
+                  { label: 'Campus Navigation', href: '/universities' },
+                  { label: 'Virtual Tour', href: '/virtual-tours' },
                 ].map(({ label, href }) => (
                   <li key={label}>
                     <a

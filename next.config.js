@@ -8,6 +8,8 @@ const staticPages = [
   'certifications',
   'hospital-navigation',
   'virtual-tours',
+  'universities',
+  'press',
 ];
 
 const nextConfig = {

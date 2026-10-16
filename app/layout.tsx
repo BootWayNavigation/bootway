@@ -1,22 +1,19 @@
-'use client';
-
+import type { Metadata } from 'next';
 import React from 'react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { TooltipProvider } from '@/components/ui/tooltip';
-import { Toaster } from '@/components/ui/toaster';
-import { Toaster as Sonner } from '@/components/ui/sonner';
-import { AuthProvider } from '@/contexts/AuthContext';
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import Providers from './providers';
 import './globals.css';
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 1000 * 60 * 5, // 5 minutes
-      gcTime: 1000 * 60 * 10, // 10 minutes
-    },
+export const metadata: Metadata = {
+  title: {
+    default: 'BootWay | Indoor Navigation Startup, Jaipur',
+    template: '%s',
   },
-});
+  description:
+    'BootWay builds app-free indoor navigation for hospitals and campuses. Careers and HR portal for BootWay iNaaS Private Limited, Jaipur.',
+  icons: {
+    icon: '/favicon.png',
+  },
+};
 
 export default function RootLayout({
   children,
@@ -25,24 +22,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <title>BootWay | Indoor Navigation Startup, Jaipur</title>
-        <meta name="description" content="BootWay builds app-free indoor navigation for hospitals and campuses. Careers and HR portal for BootWay iNaaS Private Limited, Jaipur." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.png" />
-      </head>
       <body>
-        <GoogleOAuthProvider clientId={process.env.GOG_CLNT_ID || ""}>
-          <QueryClientProvider client={queryClient}>
-            <AuthProvider>
-              <TooltipProvider>
-                <Toaster />
-                <Sonner />
-                {children}
-              </TooltipProvider>
-            </AuthProvider>
-          </QueryClientProvider>
-        </GoogleOAuthProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
