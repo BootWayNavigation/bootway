@@ -5,6 +5,21 @@
       "has": [{ "type": "host", "value": "bootway.in" }],
       "destination": "https://www.bootway.in/:path*",
       "permanent": true
+    },
+    {
+      "source": "/landing.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*.html",
+      "destination": "/:path*",
+      "permanent": true
     }
   ]
 }

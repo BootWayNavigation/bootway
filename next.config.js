@@ -46,11 +46,12 @@ const nextConfig = {
         destination: '/',
         permanent: true,
       },
-      ...staticPages.map((page) => ({
-        source: `/${page}.html`,
-        destination: `/${page}`,
+      // Catch-all: never leave .html visible in the address bar
+      {
+        source: '/:path*.html',
+        destination: '/:path*',
         permanent: true,
-      })),
+      },
     ];
   },
 };

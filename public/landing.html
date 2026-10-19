@@ -198,6 +198,7 @@ crossorigin="anonymous"></script>
   <link rel="stylesheet" href="assets/css/site.css" />
   <script src="assets/js/components/stat-card.js"></script>
   <script src="assets/js/components/projects-board.js"></script>
+  <script src="assets/js/clean-url.js"></script>
 </head>
 <body>
   <!-- Reusable icon definitions -->
@@ -1236,14 +1237,14 @@ crossorigin="anonymous"></script>
       backTop.addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
         if (history.replaceState) {
-          history.replaceState(null, "", window.location.pathname + window.location.search);
+          history.replaceState(null, "", "/");
         }
       });
 
-      // Smooth-scroll to in-page sections without showing #hash in the URL
+      // Smooth-scroll to in-page sections without showing #hash or ?go= in the URL
       const cleanUrl = () => {
         if (history.replaceState) {
-          history.replaceState(null, "", window.location.pathname + window.location.search);
+          history.replaceState(null, "", "/");
         }
       };
 
