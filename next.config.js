@@ -10,6 +10,17 @@ const staticPages = [
   'virtual-tours',
   'universities',
   'press',
+  'about',
+  'contact',
+  'terms',
+];
+
+const guidePages = [
+  'hospital-wayfinding-india',
+  'qr-vs-beacon-navigation',
+  'campus-navigation-open-days',
+  'accessible-indoor-navigation',
+  'virtual-tour-for-hospitals',
 ];
 
 const nextConfig = {
@@ -31,6 +42,14 @@ const nextConfig = {
           source: `/${page}`,
           destination: `/${page}.html`,
         })),
+        {
+          source: '/guides',
+          destination: '/guides/index.html',
+        },
+        ...guidePages.map((slug) => ({
+          source: `/guides/${slug}`,
+          destination: `/guides/${slug}.html`,
+        })),
       ],
     };
   },
@@ -44,6 +63,11 @@ const nextConfig = {
       {
         source: '/index.html',
         destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/guides/index.html',
+        destination: '/guides',
         permanent: true,
       },
       // Catch-all: never leave .html visible in the address bar

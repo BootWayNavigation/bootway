@@ -15,10 +15,19 @@ BootWay gives hospitals turn-by-turn indoor directions that open from a QR code:
 
 ## Pages
 - [Home](https://www.bootway.in/): product, industries, pricing approach
+- [About](https://www.bootway.in/about): company, founders, offices
+- [Contact](https://www.bootway.in/contact): email, phone, WhatsApp, form
 - [Hospital navigation](https://www.bootway.in/hospital-navigation): QR-based hospital wayfinding for Indian hospitals
 - [Campus navigation](https://www.bootway.in/universities): universities and institutes
 - [Virtual tours](https://www.bootway.in/virtual-tours): 360° virtual tour company in Jaipur
+- [Guides](https://www.bootway.in/guides): practical indoor navigation guides
 - [Press](https://www.bootway.in/press): media coverage and boilerplate
 - [Certifications](https://www.bootway.in/certifications)
 - [Research](https://www.bootway.in/research): why patients get lost in hospitals
+- [Privacy](https://www.bootway.in/policy) · [Terms](https://www.bootway.in/terms)
 - [Virtual tour demo](https://lub.vt.bootway.in): LUB Skill Development Centre, Sitapura
+- [Hospital wayfinding guide](https://www.bootway.in/guides/hospital-wayfinding-india)
+- [QR vs beacons](https://www.bootway.in/guides/qr-vs-beacon-navigation)
+- [Campus open days](https://www.bootway.in/guides/campus-navigation-open-days)
+- [Accessible navigation](https://www.bootway.in/guides/accessible-indoor-navigation)
+- [Virtual tours for hospitals](https://www.bootway.in/guides/virtual-tour-for-hospitals)
