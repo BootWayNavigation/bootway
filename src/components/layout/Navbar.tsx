@@ -43,7 +43,6 @@ const Navbar = () => {
   }, []);
 
   const candidateLinks = [
-    { name: 'Careers', path: '/careers' },
     ...(isAuthenticated ? [{ name: 'My Applications', path: '/applications' }] : []),
   ];
 
@@ -59,7 +58,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout();
-    window.location.href = '/careers';
+    window.location.href = '/';
   };
 
   const isActive = (path: string) => pathname === path;

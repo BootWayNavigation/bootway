@@ -240,7 +240,7 @@ export default function ApplicationList() {
                     You haven&apos;t applied to any jobs yet. Your next career move is just an application away!
                 </p>
                 <Button size="lg" className="rounded-full px-8 shadow-lg hover:shadow-xl transition-all" asChild>
-                    <Link href="/careers">Explore Opportunities</Link>
+                    <Link href="/">Back to BootWay</Link>
                 </Button>
             </div>
         );

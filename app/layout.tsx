@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: '%s',
   },
   description:
-    'BootWay builds app-free indoor navigation for hospitals and campuses. Careers and HR portal for BootWay iNaaS Private Limited, Jaipur.',
+    'BootWay builds app-free indoor navigation for hospitals and campuses. BootWay iNaaS Private Limited, Jaipur.',
   icons: {
     icon: '/favicon.png',
   },

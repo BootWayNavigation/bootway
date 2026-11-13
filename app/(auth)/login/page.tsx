@@ -26,7 +26,7 @@ function UnifiedLoginForm() {
             if (role === 'admin' || role === 'hr') {
                 window.location.href = '/admin/dashboard';
             } else {
-                router.push(redirect || '/careers');
+                router.push(redirect || '/');
             }
         } catch (err: any) {
             setError(err.message || 'Google login failed. Please try again.');
@@ -37,11 +37,11 @@ function UnifiedLoginForm() {
         <div className="min-h-screen flex items-center justify-center bg-muted/30 p-4">
             <div className="w-full max-w-sm">
                 <Link
-                    href="/careers"
+                    href="/"
                     className="inline-flex items-center text-muted-foreground hover:text-foreground mb-8 transition-colors"
                 >
                     <ArrowLeft className="w-4 h-4 mr-2" />
-                    Back to Careers
+                    Back to Home
                 </Link>
 
                 <Card className="shadow-xl border-border/50">

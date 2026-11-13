@@ -9,7 +9,7 @@ import { Loader2 } from 'lucide-react';
 function SignupRedirect() {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const redirect = searchParams?.get('redirect') || '/careers';
+    const redirect = searchParams?.get('redirect') || '/';
 
     useEffect(() => {
         router.replace(`/candidate/login?redirect=${redirect}`);
