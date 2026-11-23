@@ -30,7 +30,6 @@ STANDARD_FOOTER_INNER = '''    <div class="container">
             <li><a href="/press">Press</a></li>
             <li><a href="/certifications">Certifications</a></li>
             <li><a href="/research">Research</a></li>
-            <li><a href="/careers">Careers</a></li>
             <li><a href="/policy">Privacy policy</a></li>
             <li><a href="/terms">Terms of service</a></li>
           </ul>
@@ -165,7 +164,6 @@ lt = lt.replace(
             <li><a href="#faq">FAQ</a></li>
             <li><a href="/certifications">Certifications</a></li>
             <li><a href="/press">Media coverage</a></li>
-            <li><a href="/careers">Careers</a></li>
           </ul>
         </div>""",
 )

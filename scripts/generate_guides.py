@@ -64,7 +64,6 @@ FOOTER = '''  <footer class="site-footer" role="contentinfo">
             <li><a href="/press">Press</a></li>
             <li><a href="/certifications">Certifications</a></li>
             <li><a href="/research">Research</a></li>
-            <li><a href="/careers">Careers</a></li>
             <li><a href="/policy">Privacy policy</a></li>
             <li><a href="/terms">Terms of service</a></li>
           </ul>
