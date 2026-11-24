@@ -22,11 +22,6 @@ export default function NotFound() {
               Back to Home
             </Link>
           </Button>
-          <Button variant="outline" asChild>
-            <Link href="/">
-              Browse Jobs
-            </Link>
-          </Button>
         </div>
       </div>
     </div>

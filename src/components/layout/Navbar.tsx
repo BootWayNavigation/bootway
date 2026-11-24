@@ -241,7 +241,7 @@ const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                   className="rounded-lg border border-gray-300 px-4 py-3 text-sm font-medium text-gray-700 hover:border-blue-500 hover:text-blue-600 dark:border-gray-600 dark:text-gray-300 transition-colors"
                 >
-                  ← Candidate View
+                  ← Back to Site
                 </Link>
               ) : isAuthenticated ? (
                 <>

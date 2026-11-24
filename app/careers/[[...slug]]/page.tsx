@@ -9,10 +9,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CareersLayout({
-  children: _children,
-}: {
-  children: React.ReactNode;
-}) {
+/** /careers and /careers/* always 404 — not a public endpoint. */
+export default function CareersGone() {
   notFound();
 }

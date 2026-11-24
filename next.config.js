@@ -60,6 +60,12 @@ const nextConfig = {
         destination: '/',
         permanent: true,
       },
+      // Legacy paths that must land on the marketing home
+      {
+        source: '/index',
+        destination: '/',
+        permanent: true,
+      },
       {
         source: '/index.html',
         destination: '/',
